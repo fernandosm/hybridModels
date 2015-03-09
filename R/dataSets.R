@@ -1,0 +1,27 @@
+#' Daily record of animal's movement (from 2012 to 2013)
+#'
+#' One dataset containing the number of animals that were moved from one node to 
+#' another.
+#'
+#' @format A data frame with 31904 rows and 5 variables:
+#' \describe{
+#'   \item{Finalidade}{Type of destiny property}
+#'   \item{Dia}{The day when the movement occurs}
+#'   \item{originID}{The ID of the origin property}
+#'   \item{destinyID}{The ID of the destiny property}
+#'   \item{num.animais}{The number of animals traded}
+#' }
+#' @source ADAGRO
+"networkSample"
+
+#' Information about animal premises (from 2012 to 2013)
+#'
+#' A dataset containing animal premises' identification and census.
+#'
+#' @format A data frame with 507 rows and 2 variables:
+#' \describe{
+#'   \item{nodes.ID}{The ID of the property}
+#'   \item{pop}{Property's population size}
+#' }
+#' @source Hypothetical
+"nodesInfo"

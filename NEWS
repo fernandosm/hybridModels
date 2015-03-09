@@ -1,0 +1,18 @@
+hybridModels 0.0.1
+=================
+
+* hybridModel function: main function to simulate the spread of diseases using 
+                        an model.
+
+* buildModelClass function: generic that calls the method based on model's class.
+
+* buildModelClass.siWoDemogr: method to create an object of the class siWoDemogr.
+
+* simHB function: generic that calls the method based on model's class.
+
+* simHB.siWoDemogr function: method to run the 'SI without demographics' model.
+
+* plot.siWoDemogr function: method to plot the 'SI without demographics' results.
+
+* network.sample data: a sample of a dynamic network of traded animals between
+                       farms.

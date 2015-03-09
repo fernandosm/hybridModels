@@ -1,0 +1,27 @@
+Package: hybridModels
+Type: Package
+Title: 'hybridModels' is a R package to simulate stochastic hybrid models for
+       transmssion of anything in a dynamic network
+Version: 0.0.1
+Date: 2015-02-25
+License: GPL (>= 2)
+Depends:
+    R (>= 3.0.2), foreach
+Imports:
+    doSNOW,
+    ggplot2,
+    GillespieSSA,
+    parallel,
+    reshape2
+Description: 'hybridModels' is a R package to simulate stochastic hybrid models
+              for transmssion of anything in a dynamic network
+LazyLoad: true
+LazyData: false
+Authors@R: c(person(given = 'Fernando', family = 'S. Marques',
+                    email = 'fernando.six@gmail.com', role = c("aut", "cre")),
+             person(given = 'Jose', family='H. H. Grisi-Filho',
+                    email = 'zegrisi@gmail.com', role = "aut"),
+             person(given = 'Marcos', family = 'Amaku',
+                    email = 'marcos.amaku@gmail.com', role = "aut"))
+URL: https://github.com/fernandosm/hybridModels
+BugReports: https://github.com/fernandosm/hybridModels/issues

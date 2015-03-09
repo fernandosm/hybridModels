@@ -5,7 +5,22 @@
 *-Ex.R
 
 # R data files from past sessions
-.Rdata
+*.RData
 
 # RStudio files
 .Rproj.user/
+.Rproj.user
+*.Rproj
+
+# Check files
+hybridModels.Rcheck
+
+###### fernandosm files ######
+dev_tools/
+testFile_pck.R
+testFile.R
+allocIndividuals.R
+chooseSsaModel_v1.R
+createNewID.R
+simHybridMode_Depositl.R
+Read-and-delete-me

@@ -1,0 +1,20 @@
+citHeader("To cite lubridate in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Hybrid Models in Dynamic Network {hybridModels}",
+  author       = personList(as.person("Fernando S Marques"),
+                   as.person("Marcos Amaku"), as.person("Jose Henrique de
+                   Hildebrand e Grisi Filho")),
+  journal      = "Journal of Statistical Software",
+  year         = "201X",
+  volume       = "XX",
+  number       = "X",
+  pages        = "X--XX",
+  url          = "http://www.jstatsoft.org/vXX/XXX/",
+
+  textVersion  =
+  paste("Fernando S Marques, Marcos Amaku, Jose Henrique de Hildebrand e Grisi Filho (201X).",
+        "Hybrid Models in Dynamic Network.",
+        "Journal of Statistical Software, XX(X), X-XX.",
+        "URL http://www.jstatsoft.org/vXX/XXX/.")
+)

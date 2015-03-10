@@ -2,9 +2,13 @@ Hybrid Models
 ====
 Current version: 0.0.1
 
+<<<<<<< HEAD
 ___
 
 `hybridModels` is a R package to simulate stochastic hybrid models for transmssion of diseases in a dynamic network. 
+=======
+'hybridModels' is a R package to simulate stochastic hybrid models for transmssion of diseases in a dynamic network. 
+>>>>>>> c42ae643e49dafed5d405877414fc10e12bde850
 
 Installation
 ----

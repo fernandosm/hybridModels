@@ -58,7 +58,7 @@ simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
       
       susceptible.emigrants <- emigrants[, arc] - infected.emigrants
       
-      # -------------- Second and expensive option --------------
+      # -------------        Expensive Option        --------------
       # ------------- Randomly distributing infected --------------
       # connected.nodes is a vector data frame with the connected nodes in the time tempo
       connected.nodes <-
@@ -90,7 +90,6 @@ simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
           
           last <- last + connected.nodes[reciever.node, arc]
           
-          ###### problema aqui: quando se tem apenas um doador, a list se transforma num data.frame e não fica acessível pelo code
           connected.nodes[reciever.node, 'i.in'] <- sum(individual.emigrants[[as.character(donor.node)]][first:last])
           
           first <- first + connected.nodes[reciever.node, arc]
@@ -122,7 +121,7 @@ simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
       
       if(x$ssaObjet$pop.correc == TRUE){
         
-        ## Population correction +nout-nin ##### Problema aqui
+        ## Population correction +nout-nin #####
         correc <- integer(ssaObject$number.nodes)
         names(correc) <- names(n.individuals)
         correc[as.character(imigrants[, to])] <- imigrants[, arc]
@@ -151,7 +150,7 @@ simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
       # checking whether will be another trade
       out.sim <- GillespieSSA::ssa(x0 = ssaObject$x0, a = ssaObject$propFunction, nu = ssaObject$sCMatrix,
                                    parms = ssaObject$parms, tf = ssaObject$time.diff[tempo],
-                                   censusInterval = Inf, verbose = FALSE, method = "D")$data
+                                   censusInterval = 0, verbose = FALSE, method = "D")$data
       
       #     out.sim <- ssa(x0=ssaObject$x0, a=ssaObject$propFunction, nu=ssaObject$sCMatrix,
       #                    parms=ssaObject$parms, tf = ssaObject$tFinal, method="BTL",f=100000);
@@ -164,16 +163,18 @@ simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
       #                     parms=ssaObject$parms, tf = ssaObject$tFinal, method="OTL",censusInterval=Inf,
       #                     nc=30,epsilon=0.005,dtf=10,nd=100);
       
+      out.sim <- out.sim[(length(out.sim[,1])-2), -1]
+      
       sim.result[which(sim.result[, Time] == ssaObject[['mov.dates']][tempo]) + 1,
-                 colnames(out.sim)[-1]] <- out.sim[2, -1]
+                 names(out.sim)] <- out.sim
+      
       sim.result[which(sim.result[, Time] == ssaObject[['mov.dates']][tempo]) + 1,
                  paste('S', names(s.individuals), sep = '')] <-
-        ssaObject$parms[gsub('I','N',colnames(out.sim)[-1])] - out.sim[2, -1]
+        ssaObject$parms[gsub('I','N',names(out.sim))] - out.sim
+      
       sim.result[which(sim.result[, Time] == ssaObject[['mov.dates']][tempo]) + 1,
                  names(n.individuals)] <- ssaObject$parms[names(n.individuals)]
     }
-    
-    sim.result <- sim.result[-(tempo+1),]
     
     return(sim.result)
   }

@@ -32,8 +32,8 @@ sim.results <- hybridModel(network = networkSample, var.names,
                            nodes.info = nodesInfo,
                            model.parms = model.parms,
                            model = 'SI model without demographics',
-                           sim.number = 2, init.cond = init.cond,
-                           num.cores = 2)
+                           sim.number = 1, init.cond = init.cond,
+                           num.cores = 1)
 
 plot(sim.results)
 }

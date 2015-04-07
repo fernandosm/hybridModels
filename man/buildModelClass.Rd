@@ -7,7 +7,7 @@
 buildModelClass(x, var.names, init.cond, model.parms)
 }
 \arguments{
-\item{x}{is an empty object of the will br built.}
+\item{x}{is an empty object of a class requested.}
 
 \item{var.names}{a \code{\link{list}} with variable names of the network:
        the donor node, the reciever node, the time when each connection between

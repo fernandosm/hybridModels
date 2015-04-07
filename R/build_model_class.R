@@ -3,7 +3,7 @@
 #' @description  \code{buildModelClass} is generic function that calls a method
 #'               to create a object base on model's name.
 #' 
-#' @param x is an empty object of the will br built.
+#' @param x is an empty object of a class requested.
 #' 
 #' @inheritParams hybridModel
 #' 

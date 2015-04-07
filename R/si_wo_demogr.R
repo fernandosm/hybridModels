@@ -4,7 +4,7 @@ buildModelClass.siWoDemogr <- function(x, var.names, init.cond, model.parms){
   nodes.ID <- sort(unique(c(x$network[, var.names$from],x$network[, var.names$to])))
   nodes.info <- x$nodes.info[which(x$nodes.info[, 1] %in% nodes.ID), ]
   mov.dates <- sort(unique(x$network[, var.names$Time]))
-  time.diff <- c(as.numeric(mov.dates[2:length(mov.dates)] - mov.dates[1:(length(mov.dates)-1)]),0)
+  time.diff <- c(as.numeric(mov.dates[2:length(mov.dates)] - mov.dates[1:(length(mov.dates)-1)]),1)
   number.nodes <- length(nodes.ID)
   
   #### first model ####
@@ -32,7 +32,6 @@ buildModelClass.siWoDemogr <- function(x, var.names, init.cond, model.parms){
   colnames(results)[2] <- var.names$Time
   
   ### intial contidtions ###
-  
   nodes.info[, 'S.ID'] <- paste("S", nodes.info[, 1], sep = '')
   nodes.info[, 'I.ID'] <- paste("I", nodes.info[, 1], sep = '')
   nodes.info[, 'N.ID'] <- paste("N", nodes.info[, 1], sep = '')
@@ -42,6 +41,11 @@ buildModelClass.siWoDemogr <- function(x, var.names, init.cond, model.parms){
   results[1, nodes.info$N.ID]  <- nodes.info[, 2]
   # Suscptible
   results[1, nodes.info$S.ID]  <- (results[1, nodes.info$N.ID] - results[1, nodes.info$I.ID])
+  
+  #### adding last day ####
+  results <- rbind(results, results[length(mov.dates),])
+  results[(length(mov.dates) + 1), var.names$Time] <- mov.dates[length(mov.dates)] + 1
+  
   
   return(structure(list(ssaObjet = list(propFunction = propFunc, x0 = x0, sCMatrix = scM,
                                         parms = model.parms, mov.dates = mov.dates,

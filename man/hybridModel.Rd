@@ -4,7 +4,7 @@
 \alias{hybridModel}
 \title{Hybrid model simulation.}
 \usage{
-hybridModel(network, var.names, nodes.info, model.parms,
+hybridModel(network, var.names, nodesCensus, model.parms,
   model = "SI model without demographics", sim.number = 1,
   init.cond = init.cond, pop.correc = TRUE, num.cores = "max",
   ssa.method = list(method = character(), tau = integer()))
@@ -19,7 +19,7 @@ hybridModel(network, var.names, nodes.info, model.parms,
        donor to the reciever happened and the weight of these connection.
        The variables names must be "from", "to", "Time" and "arc", respectively.}
 
-\item{nodes.info}{a \code{\link{data.frame}} with the first column describing
+\item{nodesCensus}{a \code{\link{data.frame}} with the first column describing
        nodes' ID, the second column with the number of individuals and the third
        describing the day of the census (this last variable is not necessary
        for all models).}
@@ -51,7 +51,7 @@ Object containing a \code{\link{data.frame}} (results) with the number
 }
 \examples{
 # Parameters and initial conditions.
-data(networkSample, nodesInfo)
+data(networkSample, nodesCensus)
 networkSample <- networkSample[which(networkSample$Dia < "2012-02-01"),]
 var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
                   arc = 'num.animais')
@@ -60,7 +60,7 @@ init.cond <- c(I100525 = 10, I1155 = 10, I100324 = 10)
 
 # running simulations
 sim.results <- hybridModel(network = networkSample, var.names,
-                           nodes.info = nodesInfo,
+                           nodesCensus = nodesCensus,
                            model.parms = model.parms,
                            model = 'SI model without demographics',
                            sim.number = 1,

@@ -14,7 +14,7 @@
 #' @export plot.siWoDemogr
 #' @examples 
 #' # Parameters and initial conditions.
-#' data(networkSample, nodesInfo)
+#' data(networkSample, nodesCensus)
 #' networkSample <- networkSample[which(networkSample$Dia < "2012-02-01"),]
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
@@ -23,7 +23,7 @@
 #'                   
 #' # running simulations 
 #' sim.results <- hybridModel(network = networkSample, var.names,
-#'                            nodes.info = nodesInfo,
+#'                            nodesCensus = nodesCensus,
 #'                            model.parms = model.parms,
 #'                            model = 'SI model without demographics',
 #'                            sim.number = 1, init.cond = init.cond,

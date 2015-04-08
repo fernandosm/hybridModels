@@ -5,10 +5,10 @@
 #'
 #' @format A data frame with 31904 rows and 5 variables:
 #' \describe{
-#'   \item{Finalidade}{Type of destiny property}
+#'   \item{Finalidade}{Type of destiny premises}
 #'   \item{Dia}{The day when the movement occurs}
-#'   \item{originID}{The ID of the origin property}
-#'   \item{destinyID}{The ID of the destiny property}
+#'   \item{originID}{The ID of the origin premises}
+#'   \item{destinyID}{The ID of the destiny premises}
 #'   \item{num.animais}{The number of animals traded}
 #' }
 #' @source ADAGRO
@@ -20,8 +20,8 @@
 #'
 #' @format A data frame with 507 rows and 2 variables:
 #' \describe{
-#'   \item{nodes.ID}{The ID of the property}
-#'   \item{pop}{Property's population size}
+#'   \item{nodes.ID}{The ID of the premises}
+#'   \item{pop}{premises's population size}
 #' }
 #' @source Hypothetical
-"nodesInfo"
+"nodesCensus"

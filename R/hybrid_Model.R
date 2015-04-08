@@ -11,12 +11,11 @@
 #'        donor to the reciever happened and the weight of these connection.
 #'        The variables names must be "from", "to", "Time" and "arc", respectively.
 #'       
-#' @param nodes.info a \code{\link{data.frame}} with the first column describing
+#' @param nodesCensus a \code{\link{data.frame}} with the first column describing
 #'        nodes' ID, the second column with the number of individuals and the third
-#'        describing the day of the census (this last variable is not necessary
-#'        for all models).
+#'        describing the day of the census.
 #'        
-#' @param model a \code{\link{character}} describing model's name. 
+#' @param model a \code{\link{character}} describing model's name.
 #'
 #' @param model.parms a named \code{\link{vector}} with model's parameters.
 #'
@@ -42,7 +41,7 @@
 #' @export
 #' @examples 
 #' # Parameters and initial conditions.
-#' data(networkSample, nodesInfo)
+#' data(networkSample, nodesCensus)
 #' networkSample <- networkSample[which(networkSample$Dia < "2012-02-01"),]
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
@@ -51,7 +50,7 @@
 #'                   
 #' # running simulations 
 #' sim.results <- hybridModel(network = networkSample, var.names,
-#'                            nodes.info = nodesInfo,
+#'                            nodesCensus = nodesCensus,
 #'                            model.parms = model.parms,
 #'                            model = 'SI model without demographics',
 #'                            sim.number = 1,
@@ -59,7 +58,7 @@
 #' 
 #' plot(sim.results)
 #'
-hybridModel <-   function(network, var.names, nodes.info, model.parms,
+hybridModel <-   function(network, var.names, nodesCensus = NULL, model.parms,
                           model = 'SI model without demographics',
                           sim.number = 1, init.cond = init.cond, pop.correc = TRUE,
                           num.cores = 'max',
@@ -76,7 +75,7 @@ hybridModel <-   function(network, var.names, nodes.info, model.parms,
   model2simulate <- buildModelClass(structure(list(network = network,
                                                    ssa.method = ssa.method,
                                                    pop.correc = pop.correc,
-                                                   nodes.info = nodes.info),
+                                                   nodes.info = nodesCensus),
                                               class = c(model1, 'HM')), var.names,
                                     init.cond, model.parms)
   

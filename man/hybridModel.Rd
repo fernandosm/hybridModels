@@ -4,7 +4,7 @@
 \alias{hybridModel}
 \title{Hybrid model simulation.}
 \usage{
-hybridModel(network, var.names, nodesCensus, model.parms,
+hybridModel(network, var.names, nodesCensus = NULL, model.parms,
   model = "SI model without demographics", sim.number = 1,
   init.cond = init.cond, pop.correc = TRUE, num.cores = "max",
   ssa.method = list(method = character(), tau = integer()))
@@ -21,8 +21,7 @@ hybridModel(network, var.names, nodesCensus, model.parms,
 
 \item{nodesCensus}{a \code{\link{data.frame}} with the first column describing
        nodes' ID, the second column with the number of individuals and the third
-       describing the day of the census (this last variable is not necessary
-       for all models).}
+       describing the day of the census.}
 
 \item{model.parms}{a named \code{\link{vector}} with model's parameters.}
 

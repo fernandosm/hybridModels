@@ -1,21 +1,21 @@
 #' @name plot
 #' @title Plot for SI without demographics model
 #' 
-#' @description  \code{plot.siWoDemogr} is a method to plot the SI without
-#'               demographics model
+#' @description  \code{plot.HM} is a method to plot hybrid models from this
+#'               package
 #'               
 #' 
-#' @param x \code{siWoDemogr} object
+#' @param x \code{HM} object
 #' 
 #' @param sim which simulation to plot.
 #' 
 #' @param ... arguments to be passed to methods
 #' 
-#' @export plot.siWoDemogr
+#' @export plot.HM
 #' @examples 
 #' # Parameters and initial conditions.
 #' data(networkSample, nodesCensus)
-#' networkSample <- networkSample[which(networkSample$Dia < "2012-02-01"),]
+#' networkSample <- networkSample[which(networkSample$Dia < "2012-01-25"),]
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
 #' model.parms <- c(Beta = 1e-4)
@@ -31,7 +31,7 @@
 #' 
 #' plot(sim.results)
 
-plot.siWoDemogr <- function(x, sim = 1, ...){
+plot.HM <- function(x, sim = 1, ...){
   
   Time <- Number <- variable <- State <- NULL
   
@@ -39,12 +39,13 @@ plot.siWoDemogr <- function(x, sim = 1, ...){
   
   sim.result.plot <- reshape2::melt(sim.result, id.vars = c('sim',
                                                             x$ssaObjet$var.names$Time))
-  sim.result.plot[, 'State'] <- substring(sim.result.plot$variable,1,1)
+  sim.result.plot[, 'State'] <- substring(sim.result.plot$variable, 1, 1)
   colnames(sim.result.plot)[c(2,4)] <- c('Time','Number')
   
   ggplot2::ggplot(sim.result.plot, ggplot2::aes(x = Time, y = Number,
                                                 group = variable, color = State)) + 
     ggplot2::geom_line() + ggplot2::ggtitle(paste('Evolution of Simulation', sim)) +
+    ggplot2::ylab('Number Of Individuals') +
     ggplot2::ylim(c(0, max(sim.result[,-which(colnames(sim.result) == x$ssaObjet$var.names$Time)])))
 
   #   sim.result.plot.aggr <- aggregate(sim.result.plot$Number,

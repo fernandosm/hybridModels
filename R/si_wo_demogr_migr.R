@@ -1,4 +1,4 @@
-buildModelClass.siWoDemogr <- function(x, var.names, init.cond, model.parms){
+buildModelClass.siWoDemogrMigr <- function(x, var.names, init.cond, model.parms){
   
   #### args creation ####
   nodes.ID <- sort(unique(c(x$network[, var.names$from],x$network[, var.names$to])))
@@ -52,5 +52,5 @@ buildModelClass.siWoDemogr <- function(x, var.names, init.cond, model.parms){
                                         time.diff = time.diff, number.nodes = number.nodes,
                                         var.names = var.names, ssa.method =  x$ssa.method,
                                         IDs = nodes.info[, c(1,3:5)], pop.correc = x$pop.correc),
-                        results = results), class = c('siWoDemogr', 'HM')))
+                        results = results), class = c('siWoDemogrMigr', 'HM')))
 }

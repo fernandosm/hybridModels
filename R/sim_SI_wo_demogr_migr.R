@@ -1,6 +1,6 @@
-simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
+simHM.siWoDemogrMigr <- function(x, network, sim.number, num.cores){
   
-  siWoDemogr <- function(){
+  siWoDemogrMigr <- function(){
     
     # making it readable
     sim.result <- x$results
@@ -187,7 +187,7 @@ simHM.siWoDemogr <- function(x, network, sim.number, num.cores){
   doSNOW::registerDoSNOW(cl)
   sims <- NULL
   sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
-                        .packages = 'GillespieSSA') %dopar% (siWoDemogr())
+                        .packages = 'GillespieSSA') %dopar% (siWoDemogrMigr())
   
   parallel::stopCluster(cl)
   

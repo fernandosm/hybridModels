@@ -16,6 +16,11 @@
 #'        describing the day of the census.
 #'        
 #' @param model a \code{\link{character}} describing model's name.
+#' 
+#' @param link.type a \code{\link{character}} describing the link type between 
+#'        nodes. There are two types: 'migration' and 'influence'. In the migration
+#'        link type there are actual migration between nodes. In the influence 
+#'        link type individuals does not migrate, just influences another node.
 #'
 #' @param model.parms a named \code{\link{vector}} with model's parameters.
 #'
@@ -42,7 +47,7 @@
 #' @examples 
 #' # Parameters and initial conditions.
 #' data(networkSample, nodesCensus)
-#' networkSample <- networkSample[which(networkSample$Dia < "2012-02-01"),]
+#' networkSample <- networkSample[which(networkSample$Dia < "2012-01-25"),]
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
 #' model.parms <- c(Beta = 1e-4)
@@ -59,7 +64,7 @@
 #' plot(sim.results)
 #'
 hybridModel <-   function(network, var.names, nodesCensus = NULL, model.parms,
-                          model = 'SI model without demographics',
+                          model = 'SI model without demographics', link.type = 'migration',
                           sim.number = 1, init.cond = init.cond, pop.correc = TRUE,
                           num.cores = 'max',
                           ssa.method = list(method = character(), tau = integer())){
@@ -68,8 +73,10 @@ hybridModel <-   function(network, var.names, nodesCensus = NULL, model.parms,
   network <- network[, c(var.names$from, var.names$to, var.names$Time, var.names$arc)]
   
   #### building classes ####
-  if(model == 'SI model without demographics'){
-    model1 <- 'siWoDemogr'
+  if(model == 'SI model without demographics' & link.type == 'migration'){
+    model1 <- 'siWoDemogrMigr'
+  } else if(model == 'SI model without demographics' & link.type == 'influence'){
+    model1 <- 'siWoDemogrInfl'
   }
   
   model2simulate <- buildModelClass(structure(list(network = network,

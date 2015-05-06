@@ -1,6 +1,6 @@
 Hybrid Models
 ====
-Version: 0.0.1
+Version: 0.1.0
 
 ___
 
@@ -19,4 +19,6 @@ install_github("fernandosm/hybridModels")
 
 The current version runs:
 
-* SI hybrid model without explicit demographics. It is assumed that the total number of individuals is constant.
+* SI hybrid model without explicit demographics (migration link). It is assumed that the total number of individuals is constant and animals migrate between premises.
+
+* SI hybrid model without explicit demographics (influence link). It is assumed that the total number of individuals is constant and animals do not migrate between premises, they influence other premises.

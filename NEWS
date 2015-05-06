@@ -1,3 +1,28 @@
+hybridModels 0.1.0
+=================
+
+* hybridModel function: now it includes link.type parameter.
+
+* buildModelClass function: now it includes link.type parameter (generic function).
+
+* buildModelClass.siWoDemogrMigr: replaces buildModelClass.siWoDemogrMigr method.
+
+* buildModelClass.siWoDemogrInfl: method to create an object of the class siWoDemogrInfl.
+
+* simHB function: generic that calls the method based on model's class.
+
+* simHB.siWoDemogrMigr function: method to run the 'SI without demographics' model
+                                 of migration link type.
+
+* simHB.siWoDemogrInfl function: method to run the 'SI without demographics' model
+                                 of influence link type.
+
+* plot.HD function: replaces plot.siWoDemogrmethod method.
+
+* networkSample data: replaces network.sample
+
+* nodesCensus data: replaces nodes.Info
+
 hybridModels 0.0.1
 =================
 
@@ -16,3 +41,5 @@ hybridModels 0.0.1
 
 * network.sample data: a sample of a dynamic network of traded animals between
                        farms.
+
+* network.Info data: farms' censitary information.

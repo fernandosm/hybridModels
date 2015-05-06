@@ -26,6 +26,6 @@
 #                                                                    tau = integer()),
 #                                                  pop.correc = TRUE,
 #                                                  nodes.info = nodes.information),
-#                                                  class = c('siWoDemogr', 'HM')))
+#                                                  class = c('siWoDemogrMigr', 'HM')))
 
 simHM <- function(x, network, sim.number, num.cores = 'max') UseMethod("simHM")

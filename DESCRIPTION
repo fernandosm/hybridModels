@@ -1,8 +1,8 @@
 Package: hybridModels
 Type: Package
 Title: 'hybridModels' is a R package to simulate stochastic hybrid models for
-       transmssion of anything in a dynamic network
-Version: 0.0.1
+       transmssion of diseases in a dynamic network
+Version: 0.1.0
 Date: 2015-02-25
 License: GPL (>= 2)
 Depends:

@@ -11,4 +11,5 @@
 #' 
 #' @export
 #' @references .
-buildModelClass <- function(x, var.names, init.cond, model.parms) UseMethod("buildModelClass")
+buildModelClass <- function(x, var.names, init.cond, model.parms, prop.func = NULL,
+                            state.var = NULL, state.change.matrix = NULL) UseMethod("buildModelClass")

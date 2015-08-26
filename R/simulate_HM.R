@@ -14,7 +14,7 @@
 #' @seealso \link{GillespieSSA}.
 #' @export
 #' @import foreach
-# @examples 
+# @examples
 # data(networkSample)
 # var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #                   arc = 'num.animais')
@@ -28,4 +28,4 @@
 #                                                  nodes.info = nodes.information),
 #                                                  class = c('siWoDemogrMigr', 'HM')))
 
-simHM <- function(x, network, sim.number, num.cores = 'max') UseMethod("simHM")
+simHM <- function(x, network, sim.number, num.cores = 'max', fill.time) UseMethod("simHM")

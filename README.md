@@ -1,6 +1,6 @@
 Hybrid Models
 ====
-Version: 0.1.0
+Version: 0.2.0
 
 ___
 
@@ -18,6 +18,8 @@ install_github("fernandosm/hybridModels")
 ### Features ###
 
 The current version runs:
+
+* Customizable hybrid model in dynamic networks in which migration is the link type between nodes.
 
 * SI hybrid model without explicit demographics (migration link). It is assumed that the total number of individuals is constant and animals migrate between premises.
 

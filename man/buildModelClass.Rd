@@ -4,7 +4,8 @@
 \alias{buildModelClass}
 \title{It builds an object of a pre-specified class.}
 \usage{
-buildModelClass(x, var.names, init.cond, model.parms)
+buildModelClass(x, var.names, init.cond, model.parms, prop.func = NULL,
+  state.var = NULL, state.change.matrix = NULL)
 }
 \arguments{
 \item{x}{is an empty object of a class requested.}
@@ -17,6 +18,15 @@ buildModelClass(x, var.names, init.cond, model.parms)
 \item{init.cond}{a named \code{\link{vector}} with initial conditions.}
 
 \item{model.parms}{a named \code{\link{vector}} with model's parameters.}
+
+\item{prop.func}{a character \code{\link{vector}} with propensity functions
+       of a generic node. See references for more details}
+
+\item{state.var}{a character \code{\link{vector}} with the state varialbes of
+       the propensity functions.}
+
+\item{state.change.matrix}{is a state-change \code{\link{matrix}}. See references
+       for more details}
 }
 \value{
 An object of the class requested.

@@ -12,7 +12,9 @@ Imports:
     ggplot2,
     GillespieSSA,
     parallel,
-    reshape2
+    reshape2,
+    stringr,
+    grid
 Description: 'hybridModels' is a R package to simulate stochastic hybrid models
               for transmssion of anything in a dynamic network
 LazyLoad: true

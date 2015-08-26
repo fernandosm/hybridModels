@@ -10,26 +10,38 @@
 #'        the donor node, the reciever node, the time when each connection between
 #'        donor to the reciever happened and the weight of these connection.
 #'        The variables names must be "from", "to", "Time" and "arc", respectively.
-#'       
-#' @param nodesCensus a \code{\link{data.frame}} with the first column describing
-#'        nodes' ID, the second column with the number of individuals and the third
-#'        describing the day of the census.
-#'        
-#' @param model a \code{\link{character}} describing model's name.
 #' 
 #' @param link.type a \code{\link{character}} describing the link type between 
 #'        nodes. There are two types: 'migration' and 'influence'. In the migration
 #'        link type there are actual migration between nodes. In the influence 
 #'        link type individuals does not migrate, just influences another node.
+#'        
+#' @param model a \code{\link{character}} describing model's name.
+#' 
+#' @param init.cond a named \code{\link{vector}} with initial conditions.
+#' 
+#' @param fill.time It indicates whether to return all dates or just the dates
+#'        when nodes get connected.
 #'
 #' @param model.parms a named \code{\link{vector}} with model's parameters.
+#' 
+#' @param prop.func a character \code{\link{vector}} with propensity functions
+#'        of a generic node. See references for more details
+#' 
+#' @param state.change.matrix is a state-change \code{\link{matrix}}. See references
+#'        for more details
+#' 
+#' @param state.var a character \code{\link{vector}} with the state varialbes of
+#'        the propensity functions.
+#' 
+#' @param ssa.method a \code{\link{list}} with SSA parameters. The default method
+#'        is the direct method. See references for more details
+#'
+#' @param nodesCensus a \code{\link{data.frame}} with the first column describing
+#'        nodes' ID, the second column with the number of individuals and the third
+#'        describing the day of the census.
 #'
 #' @param sim.number Number of repetitions.The default value is 1
-#'
-#' @param init.cond a named \code{\link{vector}} with initial conditions.
-#'
-#' @param ssa.method a \code{\link{list}} with ssa method and tau leap time. The
-#'        default method is the direct method.
 #'
 #' @param pop.correc Whether \code{hybridModel} function tries to balance the number
 #'        of individuals or not. The default value is TRUE.
@@ -41,7 +53,10 @@
 #' @return Object containing a \code{\link{data.frame}} (results) with the number
 #'         of individuals through time per node and per state.
 #'
-#' @references  .
+#' @references
+#' [1] Pineda-krch, M. (2008). GillespieSSA : Implementing the Stochastic
+#'     Simulation Algorithm in R. Journal of Statistical Software, 25(12).
+#'
 #' @seealso \link{GillespieSSA}.
 #' @export
 #' @examples 
@@ -51,7 +66,7 @@
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
 #' model.parms <- c(Beta = 1e-4)
-#' init.cond <- c(I100525 = 10, I1155 = 10, I100324 = 10)
+#' init.cond <- c(I37423 = 10, I36933 = 10, I42827 = 10)
 #'                   
 #' # running simulations 
 #' sim.results <- hybridModel(network = networkSample, var.names,
@@ -63,12 +78,16 @@
 #' 
 #' plot(sim.results)
 #'
-hybridModel <-   function(network, var.names, nodesCensus = NULL, model.parms,
-                          model = 'SI model without demographics', link.type = 'migration',
-                          sim.number = 1, init.cond = init.cond, pop.correc = TRUE,
-                          num.cores = 'max',
-                          ssa.method = list(method = character(), tau = integer())){
-    
+hybridModel <-   function(network, var.names, link.type = 'migration',
+                          model = 'custom', init.cond, fill.time = F,
+                          model.parms, prop.func = NULL, state.change.matrix = NULL, 
+                          state.var = NULL,
+                          ssa.method = list(method = "D", epsilon = 0.03,
+                                            nc = 10, dtf = 10, nd = 100),
+                          nodesCensus = NULL, sim.number = 1, pop.correc = TRUE,
+                          num.cores = 'max'){
+  
+  
   #### Extracting, trasforming and loading the dynamic network #####
   network <- network[, c(var.names$from, var.names$to, var.names$Time, var.names$arc)]
   
@@ -77,6 +96,8 @@ hybridModel <-   function(network, var.names, nodesCensus = NULL, model.parms,
     model1 <- 'siWoDemogrMigr'
   } else if(model == 'SI model without demographics' & link.type == 'influence'){
     model1 <- 'siWoDemogrInfl'
+  } else if(model == 'custom' & link.type == 'migration'){
+    model1 <- 'customMigr'
   }
   
   model2simulate <- buildModelClass(structure(list(network = network,
@@ -84,10 +105,12 @@ hybridModel <-   function(network, var.names, nodesCensus = NULL, model.parms,
                                                    pop.correc = pop.correc,
                                                    nodes.info = nodesCensus),
                                               class = c(model1, 'HM')), var.names,
-                                    init.cond, model.parms)
-  
+                                    init.cond, model.parms, prop.func, state.var,
+                                    state.change.matrix)
+                                    
+                            
   #### running the simulation ####
-  model2simulate$results <- simHM(model2simulate, network, sim.number, num.cores)
+  model2simulate$results <- simHM(model2simulate, network, sim.number, num.cores, fill.time = F)
 
   return(model2simulate)
 }

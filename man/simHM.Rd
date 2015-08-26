@@ -4,7 +4,7 @@
 \alias{simHM}
 \title{It runs the chosen hybrid model.}
 \usage{
-simHM(x, network, sim.number, num.cores = "max")
+simHM(x, network, sim.number, num.cores = "max", fill.time)
 }
 \arguments{
 \item{x}{of a specific class of model.}
@@ -18,6 +18,9 @@ simHM(x, network, sim.number, num.cores = "max")
 \item{num.cores}{number of  threads/cores that the simulation will use. the
        default value is num.cores = 'max', the algothim will use all
        threads/cores available.}
+
+\item{fill.time}{It indicates whether to return all dates or just the dates
+       when nodes get connected.}
 }
 \value{
 A \code{\link{data.frame}} with the number of individuals through

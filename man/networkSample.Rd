@@ -4,7 +4,7 @@
 \name{networkSample}
 \alias{networkSample}
 \title{Daily record of animal's movement (from 2012 to 2013)}
-\format{A data frame with 31904 rows and 5 variables:
+\format{A data frame with 78 rows and 5 variables:
 \describe{
   \item{Finalidade}{Type of destiny premises}
   \item{Dia}{The day when the movement occurs}

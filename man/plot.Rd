@@ -5,14 +5,23 @@
 \alias{plot.HM}
 \title{Plot for SI without demographics model}
 \usage{
-\method{plot}{HM}(x, sim = 1, ...)
+\method{plot}{HM}(x, sim = 1, facet.scales = "free_y",
+  plot.type = "subpop", ...)
 }
 \arguments{
 \item{x}{\code{HM} object}
 
-\item{sim}{which simulation to plot.}
+\item{sim}{points to which simulation to plot.}
+
+\item{plot.type}{plots the mean number of each state variable for the whole
+       population ('pop.mean'), or the subpopulations of a particular
+       simulation ('subpop'), or the mean of each subpopulation ('subpop.mean').}
 
 \item{...}{arguments to be passed to methods}
+
+\item{should}{scales be fixed ("free_y", the default), free ("free"), or free
+       in one dimension ("free_x", "free_y"). See ggplot2 package for more
+       details.}
 }
 \description{
 \code{plot.HM} is a method to plot hybrid models from this

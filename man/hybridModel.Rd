@@ -4,11 +4,11 @@
 \alias{hybridModel}
 \title{Hybrid model simulation.}
 \usage{
-hybridModel(network, var.names, nodesCensus = NULL, model.parms,
-  model = "SI model without demographics", link.type = "migration",
-  sim.number = 1, init.cond = init.cond, pop.correc = TRUE,
-  num.cores = "max", ssa.method = list(method = character(), tau =
-  integer()))
+hybridModel(network, var.names, link.type = "migration", model = "custom",
+  init.cond, fill.time = F, model.parms, prop.func = NULL,
+  state.change.matrix = NULL, state.var = NULL, ssa.method = list(method =
+  "D", epsilon = 0.03, nc = 10, dtf = 10, nd = 100), nodesCensus = NULL,
+  sim.number = 1, pop.correc = TRUE, num.cores = "max")
 }
 \arguments{
 \item{network}{a \code{\link{data.frame}} with variables that describe
@@ -20,22 +20,37 @@ hybridModel(network, var.names, nodesCensus = NULL, model.parms,
        donor to the reciever happened and the weight of these connection.
        The variables names must be "from", "to", "Time" and "arc", respectively.}
 
-\item{nodesCensus}{a \code{\link{data.frame}} with the first column describing
-       nodes' ID, the second column with the number of individuals and the third
-       describing the day of the census.}
-
-\item{model.parms}{a named \code{\link{vector}} with model's parameters.}
-
-\item{model}{a \code{\link{character}} describing model's name.}
-
 \item{link.type}{a \code{\link{character}} describing the link type between
        nodes. There are two types: 'migration' and 'influence'. In the migration
        link type there are actual migration between nodes. In the influence
        link type individuals does not migrate, just influences another node.}
 
-\item{sim.number}{Number of repetitions.The default value is 1}
+\item{model}{a \code{\link{character}} describing model's name.}
 
 \item{init.cond}{a named \code{\link{vector}} with initial conditions.}
+
+\item{fill.time}{It indicates whether to return all dates or just the dates
+       when nodes get connected.}
+
+\item{model.parms}{a named \code{\link{vector}} with model's parameters.}
+
+\item{prop.func}{a character \code{\link{vector}} with propensity functions
+       of a generic node. See references for more details}
+
+\item{state.change.matrix}{is a state-change \code{\link{matrix}}. See references
+       for more details}
+
+\item{state.var}{a character \code{\link{vector}} with the state varialbes of
+       the propensity functions.}
+
+\item{ssa.method}{a \code{\link{list}} with SSA parameters. The default method
+       is the direct method. See references for more details}
+
+\item{nodesCensus}{a \code{\link{data.frame}} with the first column describing
+       nodes' ID, the second column with the number of individuals and the third
+       describing the day of the census.}
+
+\item{sim.number}{Number of repetitions.The default value is 1}
 
 \item{pop.correc}{Whether \code{hybridModel} function tries to balance the number
        of individuals or not. The default value is TRUE.}
@@ -43,9 +58,6 @@ hybridModel(network, var.names, nodesCensus = NULL, model.parms,
 \item{num.cores}{number of  threads/cores that the simulation will use. the
        default value is num.cores = 'max', the algothim will use all
        threads/cores available.}
-
-\item{ssa.method}{a \code{\link{list}} with ssa method and tau leap time. The
-       default method is the direct method.}
 }
 \value{
 Object containing a \code{\link{data.frame}} (results) with the number
@@ -61,7 +73,7 @@ networkSample <- networkSample[which(networkSample$Dia < "2012-01-25"),]
 var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
                   arc = 'num.animais')
 model.parms <- c(Beta = 1e-4)
-init.cond <- c(I100525 = 10, I1155 = 10, I100324 = 10)
+init.cond <- c(I37423 = 10, I36933 = 10, I42827 = 10)
 
 # running simulations
 sim.results <- hybridModel(network = networkSample, var.names,
@@ -74,7 +86,8 @@ sim.results <- hybridModel(network = networkSample, var.names,
 plot(sim.results)
 }
 \references{
-.
+[1] Pineda-krch, M. (2008). GillespieSSA : Implementing the Stochastic
+    Simulation Algorithm in R. Journal of Statistical Software, 25(12).
 }
 \seealso{
 \link{GillespieSSA}.

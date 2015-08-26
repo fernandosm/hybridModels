@@ -3,7 +3,7 @@
 #' One dataset containing the number of animals that were moved from one node to 
 #' another.
 #'
-#' @format A data frame with 31904 rows and 5 variables:
+#' @format A data frame with 78 rows and 5 variables:
 #' \describe{
 #'   \item{Finalidade}{Type of destiny premises}
 #'   \item{Dia}{The day when the movement occurs}

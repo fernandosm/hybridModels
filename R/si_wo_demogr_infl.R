@@ -1,4 +1,5 @@
-buildModelClass.siWoDemogrInfl <- function(x, var.names, init.cond, model.parms){
+buildModelClass.siWoDemogrInfl <- function(x, var.names, init.cond, model.parms,
+                                           prop.func, state.var, state.change.matrix){
   
   #### args creation ####
   nodes.ID <- sort(unique(c(x$network[, var.names$from],x$network[, var.names$to])))

@@ -20,12 +20,12 @@ Description: 'hybridModels' is a R package to simulate stochastic hybrid models
           for transmssion of infectious diseases in dynamic networks.
 LazyLoad: true
 LazyData: false
-Authors@R: c(person(given = 'Fernando', family = 'S. Marques',
-                    email = 'fernandosix@gmail.com', role = c("aut", "cre")),
-             person(given = 'Jose', family='H. H. Grisi-Filho',
-                    email = 'zegrisi@gmail.com', role = "aut"),
-             person(given = 'Marcos', family = 'Amaku',
-                    email = 'marcos.amaku@gmail.com', role = "aut"))
+Authors@R: c(person(given = "Fernando", family = "S. Marques",
+                    email = "fernandosix@gmail.com", role = c("aut", "cre")),
+             person(given = "Jose", family="H. H. Grisi-Filho",
+                    email = "zegrisi@gmail.com", role = "aut"),
+             person(given = "Marcos", family = "Amaku",
+                    email = "marcos.amaku@gmail.com", role = "ctb"))
 URL: https://github.com/fernandosm/hybridModels
 BugReports: https://github.com/fernandosm/hybridModels/issues
 RoxygenNote: 5.0.1

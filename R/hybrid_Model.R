@@ -61,22 +61,41 @@
 #' @export
 #' @examples 
 #' # Parameters and initial conditions.
-#' data(networkSample, nodesCensus)
-#' networkSample <- networkSample[which(networkSample$Dia < "2012-01-25"),]
+#' data(networkSample)
+#' networkSample <- networkSample[which(networkSample$Dia < "2012-05-30"),]
+#' 
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
-#' model.parms <- c(Beta = 1e-4)
-#' init.cond <- c(I37423 = 10, I36933 = 10, I42827 = 10)
+#'                   
+#' prop.func <- c('beta * S * I / (S + I + R)', 'gamma * I')
+#' state.var <- c('S', 'I', 'R')
+#' state.change.matrix <- matrix(c(-1,  0, # S
+#'                                  1, -1, # I
+#'                                  0,  1), # R
+#'                               nrow = 3, ncol = 2, byrow = TRUE)
+#'                               
+#' model.parms <- c(beta = 0.1, gamma = 0.01)
+#' 
+#' init.cond <- rep(200, length(unique(c(networkSample$originID,
+#'                                       networkSample$destinyID))))
+#' names(init.cond) <- paste('S', unique(c(networkSample$originID,
+#'                                         networkSample$destinyID)), sep = '')
+#' init.cond <- c(init.cond, c(I36811 = 50, I36812 = 50)) # adding infection
 #'                   
 #' # running simulations 
-#' sim.results <- hybridModel(network = networkSample, var.names,
-#'                            nodesCensus = nodesCensus,
-#'                            model.parms = model.parms,
-#'                            model = 'SI model without demographics',
-#'                            sim.number = 1,
-#'                            init.cond = init.cond, num.cores = 1)
+#' sim.results <- hybridModel(network = networkSample, var.names = var.names,
+#'                            model.parms = model.parms, state.var = state.var,
+#'                            prop.func = prop.func, init.cond = init.cond,
+#'                            state.change.matrix = state.change.matrix,
+#'                            sim.number = 2, num.cores = 'max')
 #' 
-#' plot(sim.results)
+#' # default plot layout (plot.types: 'pop.mean', 'subpop', or 'subpop.mean')
+#' plot(sim.results, plot.type = 'subpop.mean')
+#' 
+#' # changing plot layout with ggplot2 (example)
+#' library(ggplot2)
+#' plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
+#'    theme(axis.title = element_text(size = 14, face = "italic"))
 #'
 hybridModel <-   function(network, var.names, link.type = 'migration',
                           model = 'custom', init.cond, fill.time = F,

@@ -1,7 +1,6 @@
 Package: hybridModels
 Version: 0.2.1
-Title: R package to simulate stochastic hybrid models for
-    transmission of diseases in dynamic networks
+Title: Stochastic Hybrid Models in Dynamic Networks
 Date: 2016-01-14
 License: GPL (>= 2)
 Depends:

@@ -1,23 +1,23 @@
 Package: hybridModels
-Type: Package
-Title: R package to simulate stochastic hybrid models for
-    transmssion of diseases in dynamic networks
 Version: 0.2.1
+Title: R package to simulate stochastic hybrid models for
+    transmission of diseases in dynamic networks
 Date: 2016-01-14
 License: GPL (>= 2)
 Depends:
     R (>= 3.1.0),
-    foreach
+    foreach,
+    stats
 Imports:
-    doSNOW,
+    doParallel,
     ggplot2,
     GillespieSSA,
     parallel,
     reshape2,
     stringr,
     grid
-Description: 'hybridModels' is a R package to simulate stochastic hybrid models
-          for transmssion of infectious diseases in dynamic networks.
+Description: R package to simulate stochastic hybrid models
+          for transmission of infectious diseases in dynamic networks.
 LazyLoad: true
 LazyData: false
 Authors@R: c(person(given = "Fernando", family = "S. Marques",
@@ -27,10 +27,9 @@ Authors@R: c(person(given = "Fernando", family = "S. Marques",
              person(given = "Marcos", family = "Amaku",
                     email = "marcos.amaku@gmail.com", role = "aut"))
 Author: Fernando S. Marques [aut, cre],
-  Marcos Amaku [aut],
-  Jose H. H. Grisi-Filho [aut]
+  Jose H. H. Grisi-Filho [aut],
+  Marcos Amaku [aut]
 Maintainer: Fernando S. Marques <fernandosix@gmail.com>
-                    
 URL: https://github.com/fernandosm/hybridModels
 BugReports: https://github.com/fernandosm/hybridModels/issues
 RoxygenNote: 5.0.1

@@ -108,7 +108,7 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
       num.cores <- parallel::detectCores() 
     }
     cl <- parallel::makeCluster(num.cores, type = "SOCK")
-    doSNOW::registerDoSNOW(cl)
+    doParallel::registerDoParallel(cl, cores = num.cores)
     sims <- NULL
     sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
                           .packages = 'GillespieSSA') %dopar% (parallelCustomMigr())

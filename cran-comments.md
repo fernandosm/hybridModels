@@ -8,8 +8,10 @@ There were no ERRORs or WARNINGs.
 There was 1 NOTE:
 
 * checking CRAN incoming feasibility ... NOTE
+  
   Maintainer: [author] [e-mail]
+  
   **New submission**
 
 ## Downstream dependencies
-There is no downstream dependencies
+There is no downstream dependency.

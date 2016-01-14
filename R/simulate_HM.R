@@ -14,18 +14,4 @@
 #' @seealso \link{GillespieSSA}.
 #' @export
 #' @import foreach
-# @examples
-# data(networkSample)
-# var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
-#                   arc = 'num.animais')
-# model.parms <- c(Beta = 1e-4)
-# init.cond <- c(I100525 = 10, I1155 = 10, I100324 = 10)
-#                   
-# model2simulate <- buildModelClass(structure(list(network = networkSample,
-#                                                  ssa.method = list(method = character(),
-#                                                                    tau = integer()),
-#                                                  pop.correc = TRUE,
-#                                                  nodes.info = nodes.information),
-#                                                  class = c('siWoDemogrMigr', 'HM')))
-
 simHM <- function(x, network, sim.number, num.cores = 'max', fill.time) UseMethod("simHM")

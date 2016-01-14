@@ -1,3 +1,9 @@
+hybridModels 0.2.2
+=================
+
+* It uses the superseded package: 'doSNOW' since it passes the cran check and 
+  the doParallel did not.
+
 hybridModels 0.2.1
 =================
 

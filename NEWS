@@ -1,3 +1,8 @@
+hybridModels 0.2.3
+=================
+
+* stats packages from Depends to Imports.
+  
 hybridModels 0.2.2
 =================
 

@@ -24,7 +24,7 @@
 #' @examples 
 #' # Parameters and initial conditions.
 #' data(networkSample)
-#' networkSample <- networkSample[which(networkSample$Dia < "2012-06-30"),]
+#' networkSample <- networkSample[which(networkSample$Dia < "2012-04-30"),]
 #' 
 #' var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
 #'                   arc = 'num.animais')
@@ -58,7 +58,7 @@
 #' library(ggplot2)
 #' plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
 #'    theme(axis.title = element_text(size = 14, face = "italic"))
-#'    
+#'
 plot.HM <- function(x, sim = 1, plot.type = 'subpop', facet.scales = 'free_y', ...){
   
   plot.type <- match.arg(plot.type, c('subpop', 'pop.mean', 'subpop.mean'))

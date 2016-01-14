@@ -69,7 +69,7 @@ Object containing a \code{\link{data.frame}} (results) with the number
 \examples{
 # Parameters and initial conditions.
 data(networkSample)
-networkSample <- networkSample[which(networkSample$Dia < "2012-05-30"),]
+networkSample <- networkSample[which(networkSample$Dia < "2012-04-30"),]
 
 var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
                   arc = 'num.animais')

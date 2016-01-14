@@ -30,7 +30,7 @@ details.}
 \examples{
 # Parameters and initial conditions.
 data(networkSample)
-networkSample <- networkSample[which(networkSample$Dia < "2012-06-30"),]
+networkSample <- networkSample[which(networkSample$Dia < "2012-04-30"),]
 
 var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
                   arc = 'num.animais')
@@ -64,6 +64,6 @@ plot(sim.results, plot.type = 'subpop.mean')
 library(ggplot2)
 plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
    theme(axis.title = element_text(size = 14, face = "italic"))
-   
+
 }
 

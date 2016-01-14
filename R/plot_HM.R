@@ -92,11 +92,11 @@ plot.HM <- function(x, sim = 1, plot.type = 'subpop', facet.scales = 'free_y', .
     sim.result.plot <- reshape2::melt(sim.result, id.vars = c('sim',
                                                               x$ssaObjet$var.names$Time))
     sim.result.plot[, 'State'] <- substring(sim.result.plot$variable, 1, 1)
-    sim.result.plot <- aggregate(sim.result.plot$value,
+    sim.result.plot <- stats::aggregate(sim.result.plot$value,
                                  by = list(State = sim.result.plot$State,
                                            Sim = sim.result.plot$sim,
                                            Time = sim.result.plot[ , x$ssaObjet$var.names$Time]), sum)
-    sim.result.plot <- aggregate(sim.result.plot$x,
+    sim.result.plot <- stats::aggregate(sim.result.plot$x,
                                  by = list(State = sim.result.plot$State,
                                            Time = sim.result.plot$Time), mean)
     sim.result.plot$State <- factor(sim.result.plot$State, levels = x$ssaObjet$state.var)
@@ -117,7 +117,7 @@ plot.HM <- function(x, sim = 1, plot.type = 'subpop', facet.scales = 'free_y', .
     sim.result <- x$results
     sim.result.plot <- reshape2::melt(sim.result, id.vars = c('sim',
                                                               x$ssaObjet$var.names$Time))
-    sim.result.plot <- aggregate(sim.result.plot$value,
+    sim.result.plot <- stats::aggregate(sim.result.plot$value,
                                  by = list(Subpop = sim.result.plot$variable,
                                            Time = sim.result.plot[ , x$ssaObjet$var.names$Time]), mean)
     

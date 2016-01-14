@@ -20,7 +20,7 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
         # Extracting the total number of migrants per node per tempo
         # emigrants
         emigrants <- 
-          aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+          stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                             c(from,arc)][, arc],
                     by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                                       c(from,arc)][, from]),
@@ -43,7 +43,7 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
         # ------------- Randomly distributing infected --------------
         # connected.nodes is a data frame with the connected nodes in the time tempo
         connected.nodes <-
-          aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+          stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                             c(from,arc)][, arc],
                     by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                                       c(from,arc)][, from],
@@ -75,8 +75,8 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
         }
         
         # balancing
-        connected.emigrants <- aggregate(connected.nodes[, state.var], by = list(connected.nodes[, from]), sum)
-        connected.imigrants <- aggregate(connected.nodes[, state.var], by = list(connected.nodes[, to]), sum)
+        connected.emigrants <- stats::aggregate(connected.nodes[, state.var], by = list(connected.nodes[, from]), sum)
+        connected.imigrants <- stats::aggregate(connected.nodes[, state.var], by = list(connected.nodes[, to]), sum)
         
         ssaObject$x0[as.vector(apply(as.matrix(state.var), 1, function(x)
           paste(x, connected.emigrants[,'Group.1'], sep = '')))] <- as.vector(t(apply(connected.emigrants, 1, function(x){

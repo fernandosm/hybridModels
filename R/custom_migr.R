@@ -47,8 +47,9 @@ buildModelClass.customMigr <- function(x, var.names, init.cond, model.parms,
   }
   
   #### Results Data Frame ####
-  results <- as.data.frame(setNames(replicate(length(x0), integer(length(mov.dates)), 
-                                              simplify = FALSE), names(x0)))
+  results <- as.data.frame(stats::setNames(replicate(length(x0),
+                                                     integer(length(mov.dates)),
+                                                     simplify = FALSE), names(x0)))
   results[1, names(x0)] <- x0
   
   results <- cbind.data.frame(sim = integer(length(mov.dates)), Time = mov.dates, results)

@@ -29,8 +29,9 @@ buildModelClass.siWoDemogrInfl <- function(x, var.names, init.cond, model.parms,
                                                       paste("iin", nodes.ID, sep = ""),
                                                       paste("nin", nodes.ID, sep = ""))
   
-  results <- as.data.frame(setNames(replicate(length(nomes.results), integer(length(mov.dates)), 
-                                              simplify = FALSE), nomes.results))
+  results <- as.data.frame(stats::setNames(replicate(length(nomes.results),
+                                                     integer(length(mov.dates)), 
+                                                     simplify = FALSE), nomes.results))
   
   results <- cbind.data.frame(sim = integer(length(mov.dates)), Time = mov.dates, results)
   colnames(results)[2] <- var.names$Time

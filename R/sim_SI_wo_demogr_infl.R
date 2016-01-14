@@ -20,7 +20,7 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
       # Extracting the total number of migrants per node per tempo
       # emigrants
       emigrants <- 
-        aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+        stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                           c(from,arc)][, arc],
                   by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                                     c(from,arc)][, from]),
@@ -29,7 +29,7 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
       
       # imigrants
       imigrants <-
-        aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+        stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                           c(to,arc)][, arc],
                   by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                                     c(to,arc)][, to]),
@@ -56,7 +56,7 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
       infected.emigrants <- apply(cbind(i.individuals[as.character(emigrants[, from])],
                                         s.individuals[as.character(emigrants[, from])],
                                         emigrants[, arc]),
-                                  1, function(x) {rhyper(1,x[[1]],x[[2]],x[[3]])})
+                                  1, function(x) {stats::rhyper(1,x[[1]],x[[2]],x[[3]])})
       
       susceptible.emigrants <- emigrants[, arc] - infected.emigrants
       
@@ -65,7 +65,7 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
       # ------------- Randomly distributing infected --------------
       # connected.nodes is a vector data frame with the connected nodes in the time tempo
       connected.nodes <-
-        aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+        stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                           c(from,arc)][, arc],
                   by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
                                     c(from,arc)][, from],
@@ -108,7 +108,7 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
       emigrants <- cbind.data.frame(emigrants, sout = emigrants[, arc] - emigrants$iout)
       
       imigrants <- cbind.data.frame(imigrants, 
-                                    aggregate(connected.nodes[, c('iin', 'sin')],
+                                    stats::aggregate(connected.nodes[, c('iin', 'sin')],
                                               by = list(connected.nodes[, to]), sum))
       imigrants <- imigrants[, -which(names(imigrants) == 'Group.1')]
           

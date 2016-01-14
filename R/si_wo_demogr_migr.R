@@ -26,8 +26,9 @@ buildModelClass.siWoDemogrMigr <- function(x, var.names, init.cond, model.parms,
   names(x0) <- nomes
   names(model.parms)[2:(number.nodes + 1)] <- paste("N", nodes.ID, sep = "")
   
-  results <- as.data.frame(setNames(replicate(length(nomes.results), integer(length(mov.dates)), 
-                                              simplify = FALSE), nomes.results))
+  results <- as.data.frame(stats::setNames(replicate(length(nomes.results),
+                                                     integer(length(mov.dates)), 
+                                                     simplify = FALSE), nomes.results))
   
   results <- cbind.data.frame(sim = integer(length(mov.dates)), Time = mov.dates, results)
   colnames(results)[2] <- var.names$Time

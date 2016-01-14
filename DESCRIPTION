@@ -26,6 +26,11 @@ Authors@R: c(person(given = "Fernando", family = "S. Marques",
                     email = "zegrisi@gmail.com", role = "aut"),
              person(given = "Marcos", family = "Amaku",
                     email = "marcos.amaku@gmail.com", role = "aut"))
+Author: Fernando S. Marques [aut, cre],
+  Marcos Amaku [aut],
+  Jose H. H. Grisi-Filho [aut]
+Maintainer: Fernando S. Marques <fernandosix@gmail.com>
+                    
 URL: https://github.com/fernandosm/hybridModels
 BugReports: https://github.com/fernandosm/hybridModels/issues
 RoxygenNote: 5.0.1

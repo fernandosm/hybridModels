@@ -149,7 +149,7 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
     num.cores <- parallel::detectCores() 
   }
   cl <- parallel::makeCluster(num.cores, type = "SOCK")
-  doParallel::registerDoParallel(cl)
+  doSNOW::registerDoSNOW(cl)
   sims <- NULL
   sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
                         .packages = 'GillespieSSA') %dopar% (siWoDemogrInfl())

@@ -70,14 +70,14 @@ Object containing a \code{\link{data.frame}} (results) with the number
 # Parameters and initial conditions for an SIS model
 # loading the data set 
 data(networkSample) # help("networkSample"), for more info
-networkSample <- networkSample[which(networkSample$Dia < "2012-03-30"),]
+networkSample <- networkSample[which(networkSample$Dia < "2012-03-20"),]
 
 var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
                   arc = 'num.animais')
                   
 prop.func <- c('beta * S * I / (S + I)', 'gamma * I')
 state.var <- c('S', 'I')
-state.change.matrix <- matrix(c(-1,  1, # S
+state.change.matrix <- matrix(c(-1,  1,  # S
                                  1, -1), # I
                               nrow = 2, ncol = 2, byrow = TRUE)
                               
@@ -87,7 +87,7 @@ init.cond <- rep(100, length(unique(c(networkSample$originID,
                                       networkSample$destinyID))))
 names(init.cond) <- paste('S', unique(c(networkSample$originID,
                                         networkSample$destinyID)), sep = '')
-init.cond <- c(init.cond, c(I36811 = 20, I36812 = 20)) # adding infection
+init.cond <- c(init.cond, c(I36811 = 10, I36812 = 10)) # adding infection
                   
 # running simulations, check num of cores available (num.cores)
 sim.results <- hybridModel(network = networkSample, var.names = var.names,

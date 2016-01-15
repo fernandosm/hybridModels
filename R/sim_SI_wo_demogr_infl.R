@@ -1,3 +1,5 @@
+#' @import foreach
+#' 
 simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
   
   siWoDemogrInfl <- function(){
@@ -148,8 +150,13 @@ simHM.siWoDemogrInfl <- function(x, network, sim.number, num.cores){
   if(num.cores == 'max') {
     num.cores <- parallel::detectCores() 
   }
-  cl <- parallel::makeCluster(num.cores, type = "SOCK")
-  doSNOW::registerDoSNOW(cl)
+  if(Sys.info()['sysname'] == "Linux"){
+    cl <- parallel::makeCluster(num.cores, type = "SOCK")
+  } else{
+    cl <- parallel::makeCluster(num.cores)
+  }
+
+  doParallel::registerDoParallel(cl)
   sims <- NULL
   sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
                         .packages = 'GillespieSSA') %dopar% (siWoDemogrInfl())

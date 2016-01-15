@@ -28,42 +28,43 @@ details.}
               package
 }
 \examples{
-# Parameters and initial conditions.
-data(networkSample)
-networkSample <- networkSample[which(networkSample$Dia < "2012-04-30"),]
+# Parameters and initial conditions for an SIS model
+# loading the data set 
+data(networkSample) # help("networkSample"), for more info
+networkSample <- networkSample[which(networkSample$Dia < "2012-03-30"),]
 
 var.names <- list(from = 'originID', to = 'destinyID', Time = 'Dia',
                   arc = 'num.animais')
                   
-prop.func <- c('beta * S * I / (S + I + R)', 'gamma * I')
-state.var <- c('S', 'I', 'R')
-state.change.matrix <- matrix(c(-1,  0, # S
-                                 1, -1, # I
-                                 0,  1), # R
-                              nrow = 3, ncol = 2, byrow = TRUE)
+prop.func <- c('beta * S * I / (S + I)', 'gamma * I')
+state.var <- c('S', 'I')
+state.change.matrix <- matrix(c(-1,  1, # S
+                                 1, -1), # I
+                              nrow = 2, ncol = 2, byrow = TRUE)
                               
 model.parms <- c(beta = 0.1, gamma = 0.01)
 
-init.cond <- rep(200, length(unique(c(networkSample$originID,
+init.cond <- rep(100, length(unique(c(networkSample$originID,
                                       networkSample$destinyID))))
 names(init.cond) <- paste('S', unique(c(networkSample$originID,
                                         networkSample$destinyID)), sep = '')
-init.cond <- c(init.cond, c(I36811 = 50, I36812 = 50)) # adding infection
+init.cond <- c(init.cond, c(I36811 = 20, I36812 = 20)) # adding infection
                   
-# running simulations 
+# running simulations, check num of cores available (num.cores)
 sim.results <- hybridModel(network = networkSample, var.names = var.names,
                            model.parms = model.parms, state.var = state.var,
                            prop.func = prop.func, init.cond = init.cond,
                            state.change.matrix = state.change.matrix,
-                           sim.number = 2, num.cores = 'max')
+                           sim.number = 2, num.cores = 2)
 
 # default plot layout (plot.types: 'pop.mean', 'subpop', or 'subpop.mean')
 plot(sim.results, plot.type = 'subpop.mean')
 
 # changing plot layout with ggplot2 (example)
-library(ggplot2)
-plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
-   theme(axis.title = element_text(size = 14, face = "italic"))
+# uncomment the lines below to test new layout exemple
+#library(ggplot2)
+#plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
+#  theme_bw() + theme(axis.title = element_text(size = 14, face = "italic"))
 
 }
 

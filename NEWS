@@ -1,13 +1,27 @@
+hybridModels 0.2.4
+=================
+
+* faster examples (from SIR to SIS and smaller pops).
+
+* back to doParallel package.
+
+* foreach package from Depends to Imports.
+
+* layout changes data set help.
+
+
 hybridModels 0.2.3
 =================
 
-* stats packages from Depends to Imports.
+* stats package from Depends to Imports.
+
   
 hybridModels 0.2.2
 =================
 
 * It uses the superseded package: 'doSNOW' since it passes the cran check and 
   the doParallel did not.
+  
 
 hybridModels 0.2.1
 =================

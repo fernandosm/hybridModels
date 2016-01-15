@@ -1,13 +1,13 @@
 Package: hybridModels
-Version: 0.2.3
+Version: 0.2.4
 Title: Stochastic Hybrid Models in Dynamic Networks
-Date: 2016-01-14
+Date: 2016-01-15
 License: GPL (>= 2)
 Depends:
     R (>= 3.1.0),
-    foreach
 Imports:
-    doSNOW,
+    doParallel,
+    foreach,
     ggplot2,
     GillespieSSA,
     parallel,
@@ -18,7 +18,7 @@ Imports:
 Description: R package to simulate stochastic hybrid models
           for transmission of infectious diseases in dynamic networks.
 LazyLoad: true
-LazyData: false
+LazyData: true
 Authors@R: c(person(given = "Fernando", family = "S. Marques",
                     email = "fernandosix@gmail.com", role = c("aut", "cre")),
              person(given = "Jose", family="H. H. Grisi-Filho",

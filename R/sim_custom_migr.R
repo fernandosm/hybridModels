@@ -109,12 +109,8 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
     if(num.cores == 'max') {
       num.cores <- parallel::detectCores() 
     }
-    if(.Platform$OS.type=="windows"){
-      cl <- parallel::makeCluster(num.cores)
-    } else{
-      cl <- parallel::makeCluster(num.cores, type = "SOCK")
-    }
-      
+    
+    cl <- parallel::makeCluster(num.cores, type = "PSOCK")
     doParallel::registerDoParallel(cl)
     sims <- NULL
     sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,

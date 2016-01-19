@@ -1,7 +1,13 @@
+hybridModels 0.2.6
+=================
+
+* using PSOCK cluster type for all OSs.
+
+
 hybridModels 0.2.5
 =================
 
-* Considering Mac OS cluster type for parallel functions
+* Considering Mac OS cluster type for parallel functions.
 
 
 hybridModels 0.2.4

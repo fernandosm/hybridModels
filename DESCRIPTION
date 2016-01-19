@@ -4,7 +4,7 @@ Title: Stochastic Hybrid Models in Dynamic Networks
 Date: 2016-01-18
 License: GPL (>= 2)
 Depends:
-    R (>= 3.1.0),
+    R (>= 3.2.3),
 Imports:
     doParallel,
     foreach,

@@ -6,10 +6,10 @@
 \title{Daily record of animal's movement (from 2012 to 2013).}
 \format{A data frame with 78 rows and 5 variables:
 \itemize{
-  \item Finalidade: Type of destiny premises
+  \item Finalidade: Type of premises in which animal(s) will arrive
   \item Dia: The day when the movement occurs
   \item originID: The ID of the origin premises
-  \item destinyID: The ID of the destiny premises
+  \item destinationID: The ID of the destination premises
   \item num.animais: The number of animals traded
 }}
 \source{

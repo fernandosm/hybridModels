@@ -5,8 +5,8 @@
 #' 1 Global scale to simulate the transmission from one node to another
 #' 2 Local sacale to simulate the transmission inside the node
 #' 
-#' @section The models are:
-#' 'SI model without demographics'
+#' @section Modelling transmission of diseases:
+#' 'Make it possible to run n simulations in dynamic network.'
 #'
 #' @docType package
 #' @name hybridModels

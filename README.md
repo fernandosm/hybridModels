@@ -1,6 +1,6 @@
 Hybrid Models
 ====
-Version: 0.2.7
+Version: 0.2.8
 
 ___
 
@@ -20,6 +20,10 @@ install_github("fernandosm/hybridModels")
 The current version runs:
 
 * Customizable hybrid model in dynamic networks in which migration is the link type between nodes.
+
+* Find nodes of contact chains (outgoing and ingoing).
+
+* Calculate contact chains' size (outgoing and ingoing).
 
 * SI hybrid model without explicit demographics (migration link). It is assumed that the total number of individuals is constant and animals migrate between premises.
 

@@ -2,6 +2,7 @@
 
 S3method(plot,HM)
 export(buildModelClass)
+export(findContactChain)
 export(hybridModel)
 export(simHM)
 import(foreach)

@@ -11,8 +11,8 @@ in dynamics networks, using two processes in different scales:
 1 Global scale to simulate the transmission from one node to another
 2 Local sacale to simulate the transmission inside the node
 }
-\section{The models are}{
+\section{Modelling transmission of diseases}{
 
-'SI model without demographics'
+'Make it possible to run n simulations in dynamic network.'
 }
 

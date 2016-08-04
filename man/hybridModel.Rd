@@ -70,10 +70,10 @@ Object containing a \code{\link{data.frame}} (results) with the number
 # Parameters and initial conditions for an SIS model
 # loading the data set 
 data(networkSample) # help("networkSample"), for more info
-networkSample <- networkSample[which(networkSample$Dia < "2012-03-20"),]
+networkSample <- networkSample[which(networkSample$Day < "2012-03-20"),]
 
-var.names <- list(from = 'originID', to = 'destinationID', Time = 'Dia',
-                  arc = 'num.animais')
+var.names <- list(from = 'originID', to = 'destinationID', Time = 'Day',
+                  arc = 'num.animals')
                   
 prop.func <- c('beta * S * I / (S + I)', 'gamma * I')
 state.var <- c('S', 'I')

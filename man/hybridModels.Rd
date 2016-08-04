@@ -4,7 +4,7 @@
 \name{hybridModels}
 \alias{hybridModels}
 \alias{hybridModels-package}
-\title{hybridModels: A package for simulating hybrid models in dynamics networks.}
+\title{hybridModels: an R package for stochastic simulation of disease spreading in dynamic networks.}
 \description{
 The hybridModels package provides functions to simulate stochastics models
 in dynamics networks, using two processes in different scales:
@@ -13,6 +13,6 @@ in dynamics networks, using two processes in different scales:
 }
 \section{Modelling transmission of diseases}{
 
-'Make it possible to run n simulations in dynamic network.'
+'Framework to run n simulations in dynamic network and plot results'
 }
 

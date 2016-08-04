@@ -50,7 +50,7 @@ data(networkSample) # help("networkSample"), for more info.
 # contact chain function
 selected.nodes <- c(37501, 36811, 36812)
 contact.chain <- findContactChain(Data = networkSample, from = 'originID',
-                                  to = 'destinationID', Time = 'Dia', selected.nodes,
+                                  to = 'destinationID', Time = 'Day', selected.nodes,
                                   type = 'chain', numberOfcores = 2)
 }
 \references{

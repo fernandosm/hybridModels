@@ -2,7 +2,7 @@ year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "Manual",
-         title = "{hybridModels}: R package to simulate stochastic hybrid models for transmission of diseases in dynamic networks",
+         title = "{hybridModels}: an R package for stochastic simulation of disease spreading in dynamic networks",
          author = c(person("Marques", "Fernando S"),
                     person("Amaku", "Marcos"),
                     person("Grisi Filho", "Jose H H")),

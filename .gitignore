@@ -11,7 +11,7 @@
 .Rproj.user/
 .Rproj.user
 *.Rproj
-
+tests/
 # Check files
 hybridModels.Rcheck
 

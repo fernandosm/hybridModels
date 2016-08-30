@@ -4,7 +4,7 @@ Version: 0.2.9
 
 ___
 
-`hybridModels` is a R package to simulate customizable stochastic hybrid models for transmssion of diseases in dynamic networks.
+`hybridModels` is a R package to simulate customizable stochastic hybrid models for transmission of diseases in dynamic networks.
 
 ### Installation ###
 Currently, the easiest way to install the package is making use of the devtools package (Hadley Wickham and Winston Chang (2015). devtools: Tools to Make Developing R Packages Easier. R package version 1.10.0 or higher, http://CRAN.R-project.org/package=devtools).

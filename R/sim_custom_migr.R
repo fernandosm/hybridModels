@@ -42,7 +42,7 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
         names(sampled) <- emigrants[,1]
         
         # -------------        Expensive Option        --------------
-        # ------------- Randomly distributing infected --------------
+        # ----------- Randomly distributing individuals -------------
         # connected.nodes is a data frame with the connected nodes in the time tempo
         connected.nodes <-
           stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
@@ -77,8 +77,10 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
         }
         
         # balancing
-        connected.emigrants <- stats::aggregate(connected.nodes[, state.var], by = list(connected.nodes[, from]), sum)
-        connected.imigrants <- stats::aggregate(connected.nodes[, state.var], by = list(connected.nodes[, to]), sum)
+        connected.emigrants <- stats::aggregate(connected.nodes[, state.var],
+                                                by = list(connected.nodes[, from]), sum)
+        connected.imigrants <- stats::aggregate(connected.nodes[, state.var],
+                                                by = list(connected.nodes[, to]), sum)
         
         ssaObject$x0[as.vector(apply(as.matrix(state.var), 1, function(x)
           paste(x, connected.emigrants[,'Group.1'], sep = '')))] <- as.vector(t(apply(connected.emigrants, 1, function(x){

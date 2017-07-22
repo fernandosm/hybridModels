@@ -98,10 +98,10 @@
 #' #plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
 #' #  theme_bw() + theme(axis.title = element_text(size = 14, face = "italic"))
 #'
-hybridModel <-   function(network, var.names, link.type = 'migration',
+hybridModel <-   function(network, var.names = NULL, link.type = 'migration',
                           model = 'custom', init.cond, fill.time = F,
-                          model.parms, prop.func = NULL, state.change.matrix = NULL, 
-                          state.var = NULL,
+                          model.parms, prop.func = NULL, 
+                          state.var = NULL, state.change.matrix = NULL,
                           ssa.method = list(method = "D", epsilon = 0.03,
                                             nc = 10, dtf = 10, nd = 100),
                           nodesCensus = NULL, sim.number = 1, pop.correc = TRUE,
@@ -109,7 +109,13 @@ hybridModel <-   function(network, var.names, link.type = 'migration',
   
   
   #### Extracting, trasforming and loading the dynamic network #####
-  network <- network[, c(var.names$from, var.names$to, var.names$Time, var.names$arc)]
+  if (!is.null(var.names)){
+    network <- network[, c(var.names$from, var.names$to, var.names$Time,
+                           var.names$arc)]  
+  } else{
+    network <- network[, c("from", "to", "Time",
+                           "arc")]
+  }
   
   #### building classes ####
   if(model == 'SI model without demographics' & link.type == 'migration'){

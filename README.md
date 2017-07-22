@@ -9,7 +9,7 @@ ___
 ### Installation ###
 It is possible to use one of the options below to install the package:
 
-* Using the function install.packages() for stable versions from CRAN.
+* Using the function install.packages() for stable versions from CRAN (https://CRAN.R-project.org/package=hybridModels).
 
 > From CRAN
 ```

@@ -23,4 +23,3 @@ One dataset containing the number of animals that were moved from one node to
 another.
 }
 \keyword{datasets}
-

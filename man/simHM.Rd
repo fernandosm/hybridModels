@@ -36,4 +36,3 @@ A \code{\link{data.frame}} with the number of individuals through
 \seealso{
 \link{GillespieSSA}.
 }
-

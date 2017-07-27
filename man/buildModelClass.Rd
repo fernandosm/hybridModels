@@ -38,4 +38,3 @@ An object of the class requested.
 \references{
 .
 }
-

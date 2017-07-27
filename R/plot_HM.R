@@ -1,5 +1,5 @@
 #' @name plot
-#' @title Plot for SI without demographics model
+#' @title Summary plots for hybrid Models
 #' 
 #' @description  \code{plot.HM} is a method to plot hybrid models from this
 #'               package
@@ -7,7 +7,7 @@
 #' 
 #' @param x \code{HM} object
 #' 
-#' @param sim points to which simulation to plot.
+#' @param sim indicates which simulation to plot.
 #' 
 #' @param facet.scales should scales be fixed ("free_y", the default), free ("free"), or free
 #'        in one dimension ("free_x", "free_y"). See ggplot2 package for more

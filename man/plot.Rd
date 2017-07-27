@@ -3,7 +3,7 @@
 \name{plot}
 \alias{plot}
 \alias{plot.HM}
-\title{Plot for SI without demographics model}
+\title{Summary plots for hybrid Models}
 \usage{
 \method{plot}{HM}(x, sim = 1, plot.type = "subpop",
   facet.scales = "free_y", ...)
@@ -11,7 +11,7 @@
 \arguments{
 \item{x}{\code{HM} object}
 
-\item{sim}{points to which simulation to plot.}
+\item{sim}{indicates which simulation to plot.}
 
 \item{plot.type}{plots the mean number of each state variable for the whole
 population ('pop.mean'), or the subpopulations of a particular
@@ -67,4 +67,3 @@ plot(sim.results, plot.type = 'subpop.mean')
 #  theme_bw() + theme(axis.title = element_text(size = 14, face = "italic"))
 
 }
-

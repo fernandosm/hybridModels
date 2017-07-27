@@ -4,11 +4,12 @@
 \alias{hybridModel}
 \title{Hybrid model simulation.}
 \usage{
-hybridModel(network, var.names, link.type = "migration", model = "custom",
-  init.cond, fill.time = F, model.parms, prop.func = NULL,
-  state.change.matrix = NULL, state.var = NULL, ssa.method = list(method =
-  "D", epsilon = 0.03, nc = 10, dtf = 10, nd = 100), nodesCensus = NULL,
-  sim.number = 1, pop.correc = TRUE, num.cores = "max")
+hybridModel(network, var.names = NULL, link.type = "migration",
+  model = "custom", init.cond, fill.time = F, model.parms,
+  prop.func = NULL, state.var = NULL, state.change.matrix = NULL,
+  ssa.method = list(method = "D", epsilon = 0.03, nc = 10, dtf = 10, nd =
+  100), nodesCensus = NULL, sim.number = 1, pop.correc = TRUE,
+  num.cores = "max")
 }
 \arguments{
 \item{network}{a \code{\link{data.frame}} with variables that describe
@@ -37,11 +38,11 @@ when nodes get connected.}
 \item{prop.func}{a character \code{\link{vector}} with propensity functions
 of a generic node. See references for more details}
 
-\item{state.change.matrix}{is a state-change \code{\link{matrix}}. See references
-for more details}
-
 \item{state.var}{a character \code{\link{vector}} with the state varialbes of
 the propensity functions.}
+
+\item{state.change.matrix}{is a state-change \code{\link{matrix}}. See references
+for more details}
 
 \item{ssa.method}{a \code{\link{list}} with SSA parameters. The default method
 is the direct method. See references for more details}
@@ -113,4 +114,3 @@ plot(sim.results, plot.type = 'subpop.mean')
 \seealso{
 \link{GillespieSSA}.
 }
-

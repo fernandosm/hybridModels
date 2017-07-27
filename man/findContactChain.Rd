@@ -79,4 +79,3 @@ contact.chain <- findContactChain(Data = networkSample, from = 'originID',
     for disease control and risk based surveillance. In: Preventive veterinary
     medicine 99.2-4 (2011), pp. 78-90. doi: 10.1016/j.prevetmed.2010.12.009.
 }
-

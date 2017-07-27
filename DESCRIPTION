@@ -1,5 +1,5 @@
 Package: hybridModels
-Version: 0.2.10
+Version: 0.2.11
 Title: Stochastic Hybrid Models in Dynamic Networks
 Date: 2017-07-21
 License: GPL (>= 2)
@@ -31,4 +31,4 @@ Author: Fernando S. Marques [aut, cre],
 Maintainer: Fernando S. Marques <fernandosix@gmail.com>
 URL: https://github.com/fernandosm/hybridModels
 BugReports: https://github.com/fernandosm/hybridModels/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

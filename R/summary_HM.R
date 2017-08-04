@@ -16,6 +16,8 @@
 #' 
 #' @param ... arguments to be passed to methods.
 #' 
+#' @export
+#' 
 #' @examples 
 #' # Parameters and initial conditions for an SIS model
 #' # loading the data set 

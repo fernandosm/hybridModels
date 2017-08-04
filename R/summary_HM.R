@@ -4,7 +4,7 @@
 #' @description  \code{summary.HM} is a method to print a summary with basic
 #'               description of nodes' final states based.
 #'               
-#' @param x \code{HM} object
+#' @param object \code{HM} object
 #' 
 #' @param stateVars \code{\link{vector}} containing the state variable to
 #'                  summarize. The default value is NULL, which will print a
@@ -50,42 +50,42 @@
 #' 
 #' summary(sim.results, stateVars = c('S', 'I'), nodes = c(36812, 36813))
 #'
-summary.HM <- function(x, stateVars = NULL, nodes = NULL, ...){
+summary.HM <- function(object, stateVars = NULL, nodes = NULL, ...){
   
   if (is.null(stateVars) & is.null(nodes)){
-    summ.result <- x$results[which(x$results$Day == max(x$results$Day)),]
+    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),]
     return(summary(summ.result))
   } else if(is.null(nodes)){
-    stateVars <- match.arg(stateVars, x$ssaObjet$state.var, several.ok = TRUE)
-    summ.result <- x$results[which(x$results$Day == max(x$results$Day)),
+    stateVars <- match.arg(stateVars, object$ssaObjet$state.var, several.ok = TRUE)
+    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),
                              grep(paste("^", stateVars, sep='',
-                                        collapse="|"), colnames(x$results))]
+                                        collapse="|"), colnames(object$results))]
     return(summary(summ.result))
   } else if(is.null(stateVars)){
     nodes <- match.arg(as.character(nodes),
-                       unique(sub(paste("^", x$ssaObjet$state.var, sep='',
+                       unique(sub(paste("^", object$ssaObjet$state.var, sep='',
                                         collapse="|"), '',
-                                  colnames(x$results)[c(-1, -2)])),
+                                  colnames(object$results)[c(-1, -2)])),
                        several.ok = TRUE)
-    summ.result <- x$results[which(x$results$Day == max(x$results$Day)),
+    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),
                              grep(paste("^",
-                                        apply(expand.grid(x$ssaObjet$state.var,
+                                        apply(expand.grid(object$ssaObjet$state.var,
                                                           nodes), 1, paste,
                                               collapse = ""), sep='',
-                                        collapse="|"), colnames(x$results))]
+                                        collapse="|"), colnames(object$results))]
     return(summary(summ.result))
   } else{
-    stateVars <- match.arg(stateVars, x$ssaObjet$state.var, several.ok = TRUE)
+    stateVars <- match.arg(stateVars, object$ssaObjet$state.var, several.ok = TRUE)
     nodes <- match.arg(as.character(nodes),
-                       unique(sub(paste("^", x$ssaObjet$state.var, sep='',
+                       unique(sub(paste("^", object$ssaObjet$state.var, sep='',
                                         collapse="|"), '',
-                                  colnames(x$results)[c(-1, -2)])),
+                                  colnames(object$results)[c(-1, -2)])),
                        several.ok = TRUE)
-    summ.result <- x$results[which(x$results$Day == max(x$results$Day)),
+    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),
                              grep(paste("^",
                                         apply(expand.grid(stateVars, nodes), 1,
                                               paste, collapse = ""), sep='',
-                                        collapse="|"), colnames(x$results))]
+                                        collapse="|"), colnames(object$results))]
     return(summary(summ.result)) 
   }
 }

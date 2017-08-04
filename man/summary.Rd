@@ -5,10 +5,10 @@
 \alias{summary.HM}
 \title{summary for hybrid models}
 \usage{
-\method{summary}{HM}(x, stateVars = NULL, nodes = NULL, ...)
+\method{summary}{HM}(object, stateVars = NULL, nodes = NULL, ...)
 }
 \arguments{
-\item{x}{\code{HM} object}
+\item{object}{\code{HM} object}
 
 \item{stateVars}{\code{\link{vector}} containing the state variable to
 summarize. The default value is NULL, which will print a

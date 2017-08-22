@@ -1,3 +1,10 @@
+hybridModels 0.2.13
+=================
+
+* New class and methods to handle customizable models of influence link type.
+
+* new example with a influence link type.
+
 hybridModels 0.2.12
 =================
 
@@ -90,7 +97,7 @@ hybridModels 0.2.0
 
 * buildModelClass.customMigr: method to create an object of the class customMigr.
 
-* simHB.customMigr function: method to run custom models (migration link type).
+* simHM.customMigr function: method to run custom models (migration link type).
 
 * plot.HD function: new plot opstions.
 

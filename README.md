@@ -1,6 +1,6 @@
 Hybrid Models
 ====
-Version: 0.2.12
+Version: 0.2.13
 
 ___
 
@@ -29,6 +29,8 @@ install_github("fernandosm/hybridModels")
 The current version runs:
 
 * Customizable hybrid model in dynamic networks in which migration is the link type between nodes.
+
+* Customizable hybrid model in dynamic networks in which influence is the link type between nodes.
 
 * Find nodes of contact chains (outgoing and ingoing).
 

@@ -6,10 +6,10 @@
 \usage{
 hybridModel(network, var.names = NULL, link.type = "migration",
   model = "custom", init.cond, fill.time = F, model.parms,
-  prop.func = NULL, state.var = NULL, state.change.matrix = NULL,
-  ssa.method = list(method = "D", epsilon = 0.03, nc = 10, dtf = 10, nd =
-  100), nodesCensus = NULL, sim.number = 1, pop.correc = TRUE,
-  num.cores = "max")
+  prop.func = NULL, state.var = NULL, infl.var = NULL,
+  state.change.matrix = NULL, ssa.method = list(method = "D", epsilon =
+  0.03, nc = 10, dtf = 10, nd = 100), nodesCensus = NULL, sim.number = 1,
+  pop.correc = TRUE, num.cores = "max")
 }
 \arguments{
 \item{network}{a \code{\link{data.frame}} with variables that describe
@@ -38,8 +38,11 @@ when nodes get connected.}
 \item{prop.func}{a character \code{\link{vector}} with propensity functions
 of a generic node. See references for more details}
 
-\item{state.var}{a character \code{\link{vector}} with the state varialbes of
+\item{state.var}{a character \code{\link{vector}} with the state variables of
 the propensity functions.}
+
+\item{infl.var}{a named \code{\link{vector}} mapping state variables to influence
+variables.}
 
 \item{state.change.matrix}{is a state-change \code{\link{matrix}}. See references
 for more details}
@@ -68,6 +71,7 @@ Object containing a \code{\link{data.frame}} (results) with the number
 \code{hybridModel} function runs hybrid models simulations.
 }
 \examples{
+# Migration model
 # Parameters and initial conditions for an SIS model
 # loading the data set 
 data(networkSample) # help("networkSample"), for more info
@@ -105,6 +109,41 @@ plot(sim.results, plot.type = 'subpop.mean')
 #library(ggplot2)
 #plot(sim.results, plot.type = 'subpop') + ggtitle('New Layout') + 
 #  theme_bw() + theme(axis.title = element_text(size = 14, face = "italic"))
+
+# Influence model
+# Parameters and initial conditions for an SIS model
+# loading the data set 
+data(networkSample) # help("networkSample"), for more info
+networkSample <- networkSample[which(networkSample$Day < "2012-03-20"),]
+
+var.names <- list(from = 'originID', to = 'destinationID', Time = 'Day',
+                  arc = 'num.animals')
+                  
+prop.func <- c('beta * S * (I + i) / (S + I + s + i)', 'gamma * I')
+state.var <- c('S', 'I')
+infl.var <- c(S = "s", I = "i") # mapping influence
+state.change.matrix <- matrix(c(-1,  1,  # S
+                                 1, -1), # I
+                              nrow = 2, ncol = 2, byrow = TRUE)
+                              
+model.parms <- c(beta = 0.1, gamma = 0.01)
+
+init.cond <- rep(100, length(unique(c(networkSample$originID,
+                                      networkSample$destinationID))))
+names(init.cond) <- paste('S', unique(c(networkSample$originID,
+                                        networkSample$destinationID)), sep = '')
+init.cond <- c(init.cond, c(I36811 = 10, I36812 = 10)) # adding infection
+                  
+# running simulations, check num of cores available (num.cores)
+sim.results <- hybridModel(network = networkSample, var.names = var.names,
+                           model.parms = model.parms, state.var = state.var,
+                           infl.var = infl.var, prop.func = prop.func,
+                           init.cond = init.cond,
+                           state.change.matrix = state.change.matrix,
+                           sim.number = 2, num.cores = 2)
+
+# default plot layout (plot.types: 'pop.mean', 'subpop', or 'subpop.mean')
+plot(sim.results, plot.type = 'subpop.mean')
 
 }
 \references{

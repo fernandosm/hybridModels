@@ -1,5 +1,6 @@
 buildModelClass.customMigr <- function(x, var.names, init.cond, model.parms,
-                                       prop.func, state.var, state.change.matrix){
+                                       prop.func, state.var,
+                                       infl.var, state.change.matrix){
   
   #### args creation ####
   node.ID <- sort(unique(c(x$network[, var.names$from],

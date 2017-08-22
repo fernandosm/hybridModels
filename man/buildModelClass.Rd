@@ -5,7 +5,7 @@
 \title{It builds an object of a pre-specified class.}
 \usage{
 buildModelClass(x, var.names, init.cond, model.parms, prop.func = NULL,
-  state.var = NULL, state.change.matrix = NULL)
+  state.var = NULL, infl.var = NULL, state.change.matrix = NULL)
 }
 \arguments{
 \item{x}{is an empty object of a class requested.}
@@ -22,8 +22,11 @@ The variables names must be "from", "to", "Time" and "arc", respectively.}
 \item{prop.func}{a character \code{\link{vector}} with propensity functions
 of a generic node. See references for more details}
 
-\item{state.var}{a character \code{\link{vector}} with the state varialbes of
+\item{state.var}{a character \code{\link{vector}} with the state variables of
 the propensity functions.}
+
+\item{infl.var}{a named \code{\link{vector}} mapping state variables to influence
+variables.}
 
 \item{state.change.matrix}{is a state-change \code{\link{matrix}}. See references
 for more details}

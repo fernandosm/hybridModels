@@ -53,7 +53,7 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
                                       c(to,arc)][, to]),
                     FUN = sum)
         colnames(connected.nodes) <- c(from, to, arc)
-        connected.nodes[,state.var] <- 0
+        connected.nodes[, state.var] <- 0
         
         
         # distribution of individuals

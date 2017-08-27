@@ -1,3 +1,10 @@
+hybridModels 0.2.14
+=================
+
+* findContactChain: it retrieves chains without selected.node.
+
+* networkSample: removing unnecessary data.
+
 hybridModels 0.2.13
 =================
 

@@ -99,10 +99,12 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
   selected.nodes <- data.frame(selected.nodes)
   selected.nodes <- merge(selected.nodes, newID, by = 'selected.nodes')
   
-  #### pre-parallel ####
+  #### pre-processing for parallel function  ####
   mov.time <- sort(unique(Data[,Time]))
   mov.time2 <- sort(mov.time,decreasing = T)
   tamanho <- length(mov.time)
+  
+  # Creating an ordered list
   Data <- apply(as.data.frame(mov.time), 1,
                 function(x) Data[which(Data[, Time] == x), c(from, to)])
   names(Data) <- mov.time
@@ -121,6 +123,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
         
         outgoing.old <- check.out
         
+        # Retrive nodes that are connected to nodes in the chain
         outgoing.chain <- union(outgoing.chain, Data[[as.character(mov.time[d])]]
                                 [which(Data[[as.character(mov.time[d])]][, from] %in%
                                          outgoing.chain), to])
@@ -132,6 +135,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
       while(ingoing.old != check.in){
         
         ingoing.old <- check.in
+        # Retrive nodes that are connected to nodes in the chain
         ingoing.chain <- union(ingoing.chain, Data[[as.character(mov.time2[d])]]
                                [which(Data[[as.character(mov.time2[d])]][, to] %in%
                                         ingoing.chain), from])
@@ -139,7 +143,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
       }
       
     }
-    return(c(check.out, check.in, selected.nodes[n, 'selected.nodes']));
+    return(c(check.out - 1, check.in - 1, selected.nodes[n, 'selected.nodes']));
   }
   
   #### parallel function algorithm 6 ####
@@ -155,7 +159,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
       while(outgoing.old != check.out){
         
         outgoing.old <- check.out
-        
+        # Retrive nodes that are connected to nodes in the chain
         outgoing.chain <- union(outgoing.chain, Data[[as.character(mov.time[d])]]
                                 [which(Data[[as.character(mov.time[d])]][, from] %in%
                                          outgoing.chain), to])
@@ -167,6 +171,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
       while(ingoing.old != check.in){
         
         ingoing.old <- check.in
+        # Retrive nodes that are connected to nodes in the chain
         ingoing.chain <- union(ingoing.chain, Data[[as.character(mov.time2[d])]]
                                [which(Data[[as.character(mov.time2[d])]][, to] %in% 
                                         ingoing.chain), from])
@@ -176,15 +181,17 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
     }
     
     mylist <- list()
-    print(mylist)
+    # storing chains
     mylist[[paste('ingoing.', selected.nodes[n, 'selected.nodes'] , sep = '')]] <-
-      newID[ingoing.chain, 'selected.nodes']
+      newID[ingoing.chain[-which(ingoing.chain == selected.nodes[n, 'newID'])],
+            'selected.nodes']
     
     mylist[[paste('outgoing.', selected.nodes[n, 'selected.nodes'] , sep = '')]] <-
-      newID[outgoing.chain, 'selected.nodes']
+      newID[outgoing.chain[-which(outgoing.chain == selected.nodes[n, 'newID'])],
+            'selected.nodes']
     
-    mylist[['contact.chain']] <- data.frame(outgoing = check.out,
-                                            ingoing = check.in,
+    mylist[['contact.chain']] <- data.frame(outgoing = check.out - 1,
+                                            ingoing = check.in - 1,
                                             selected.nodes = 
                                               selected.nodes[n, 'selected.nodes'])
     return(mylist)

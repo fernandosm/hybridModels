@@ -11,7 +11,7 @@
 \arguments{
 \item{object}{\code{HM} object}
 
-\item{at}{the date that will be used to print the summary}
+\item{at}{the date (as character) that will be used to print the summary}
 
 \item{stateVars}{\code{\link{vector}} containing the state variable to
 summarize. The default value is NULL, which will print a

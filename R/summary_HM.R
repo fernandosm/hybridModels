@@ -12,7 +12,7 @@
 #'                  summarize. The default value is NULL, which will print a
 #'                  summary with all states.
 #' 
-#' @param at the date that will be used to print the summary
+#' @param at the date (as character) that will be used to print the summary
 #' 
 #' @param nodes \code{\link{vector}} containing the nodes of interest. The
 #'              default value is NULL, which will print a summary with all

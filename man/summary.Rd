@@ -5,10 +5,13 @@
 \alias{summary.HM}
 \title{summary for hybrid models}
 \usage{
-\method{summary}{HM}(object, stateVars = NULL, nodes = NULL, ...)
+\method{summary}{HM}(object, at = NULL, stateVars = NULL, nodes = NULL,
+  ...)
 }
 \arguments{
 \item{object}{\code{HM} object}
+
+\item{at}{the date that will be used to print the summary}
 
 \item{stateVars}{\code{\link{vector}} containing the state variable to
 summarize. The default value is NULL, which will print a
@@ -22,7 +25,9 @@ nodes.}
 }
 \description{
 \code{summary.HM} is a method to print a summary with basic
-              description of nodes' final states based.
+              description of nodes' states at a specific time (the time must
+              be present in the network data). The default value is Null,
+              that means it prints nodes' final states.
 }
 \examples{
 # Parameters and initial conditions for an SIS model

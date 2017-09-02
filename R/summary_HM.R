@@ -2,13 +2,17 @@
 #' @title summary for hybrid models
 #' 
 #' @description  \code{summary.HM} is a method to print a summary with basic
-#'               description of nodes' final states based.
+#'               description of nodes' states at a specific time (the time must
+#'               be present in the network data). The default value is Null,
+#'               that means it prints nodes' final states. 
 #'               
 #' @param object \code{HM} object
 #' 
 #' @param stateVars \code{\link{vector}} containing the state variable to
 #'                  summarize. The default value is NULL, which will print a
 #'                  summary with all states.
+#' 
+#' @param at the date that will be used to print the summary
 #' 
 #' @param nodes \code{\link{vector}} containing the nodes of interest. The
 #'              default value is NULL, which will print a summary with all
@@ -50,14 +54,17 @@
 #' 
 #' summary(sim.results, stateVars = c('S', 'I'), nodes = c(36812, 36813))
 #'
-summary.HM <- function(object, stateVars = NULL, nodes = NULL, ...){
+summary.HM <- function(object, at = NULL, stateVars = NULL, nodes = NULL, ...){
   
+  if (is.null(at)){
+    at = max(object$results$Day)
+  }
   if (is.null(stateVars) & is.null(nodes)){
-    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),]
+    summ.result <- object$results[which(object$results$Day == at),]
     return(summary(summ.result))
   } else if(is.null(nodes)){
     stateVars <- match.arg(stateVars, object$ssaObjet$state.var, several.ok = TRUE)
-    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),
+    summ.result <- object$results[which(object$results$Day == at),
                              grep(paste("^", stateVars, sep='',
                                         collapse="|"), colnames(object$results))]
     return(summary(summ.result))
@@ -67,7 +74,7 @@ summary.HM <- function(object, stateVars = NULL, nodes = NULL, ...){
                                         collapse="|"), '',
                                   colnames(object$results)[c(-1, -2)])),
                        several.ok = TRUE)
-    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),
+    summ.result <- object$results[which(object$results$Day == at),
                              grep(paste("^",
                                         apply(expand.grid(object$ssaObjet$state.var,
                                                           nodes), 1, paste,
@@ -81,7 +88,7 @@ summary.HM <- function(object, stateVars = NULL, nodes = NULL, ...){
                                         collapse="|"), '',
                                   colnames(object$results)[c(-1, -2)])),
                        several.ok = TRUE)
-    summ.result <- object$results[which(object$results$Day == max(object$results$Day)),
+    summ.result <- object$results[which(object$results$Day == at),
                              grep(paste("^",
                                         apply(expand.grid(stateVars, nodes), 1,
                                               paste, collapse = ""), sep='',

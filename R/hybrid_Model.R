@@ -147,7 +147,7 @@ hybridModel <-   function(network, var.names = NULL, link.type = 'migration',
                           num.cores = 'max'){
   
   
-  #### Extracting, trasforming and loading the dynamic network #####
+  #### setting dynamic type #####
   if (!is.null(var.names)){
     network <- network[, c(var.names$from, var.names$to, var.names$Time,
                            var.names$arc)]  

@@ -26,6 +26,7 @@ buildModelClass.customInfl <- function(x, var.names, init.cond, model.parms,
   j <- 1
   k <- 1
   
+  # propensity functions and parameters (infl.var) for each node
   for(i in 1:number.nodes){
     state.var.replacements[1:number.statVar] <- paste(state.var, node.ID[i], sep = '')
     infl.var.replacements[1:number.inflVar] <- paste(infl.var, node.ID[i], sep = '')

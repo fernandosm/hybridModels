@@ -31,6 +31,7 @@ simHM.customInfl<- function(x, network, sim.number, num.cores, fill.time){
         colnames(emigrants) <- c(from, arc)
         
         ### sampling from nodes ###
+        # vector with emigrants tagged by its state, e.g., S or I
         sampled <- apply(emigrants, 1,
                          function(x){
                            sampled <- sample(rep(state.var,
@@ -43,7 +44,6 @@ simHM.customInfl<- function(x, network, sim.number, num.cores, fill.time){
           sampled <- as.list(data.frame(sampled, stringsAsFactors = F))
         names(sampled) <- emigrants[,1]
         
-        # -------------        Expensive Option        --------------
         # -----------  Randomly distributing influence  -------------
         # connected.nodes is a data frame with the connected nodes in the time tempo
         connected.nodes <-

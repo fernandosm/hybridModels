@@ -21,6 +21,7 @@ buildModelClass.customMigr <- function(x, var.names, init.cond, model.parms,
   names(state.var.replacements) <- state.var
   j <- 1
   
+  # propensity functions for each node
   for(i in 1:number.nodes){
     state.var.replacements[1:number.statVar] <- paste(state.var, node.ID[i], sep = '')
     propFunc <- c(propFunc,

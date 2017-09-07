@@ -67,7 +67,7 @@
 #' # Parameters and initial conditions for an SIS model
 #' # loading the data set 
 #' data(networkSample) # help("networkSample"), for more info
-#' networkSample <- networkSample[which(networkSample$Day < "2012-03-20"),]
+#' networkSample <- networkSample[which(networkSample$Day < "2012-02-20"),]
 #' 
 #' var.names <- list(from = 'originID', to = 'destinationID', Time = 'Day',
 #'                   arc = 'num.animals')
@@ -106,7 +106,7 @@
 #' # Parameters and initial conditions for an SIS model
 #' # loading the data set 
 #' data(networkSample) # help("networkSample"), for more info
-#' networkSample <- networkSample[which(networkSample$Day < "2012-03-20"),]
+#' networkSample <- networkSample[which(networkSample$Day < "2012-01-20"),]
 #' 
 #' var.names <- list(from = 'originID', to = 'destinationID', Time = 'Day',
 #'                   arc = 'num.animals')

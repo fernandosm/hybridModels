@@ -114,7 +114,7 @@ plot(sim.results, plot.type = 'subpop.mean')
 # Parameters and initial conditions for an SIS model
 # loading the data set 
 data(networkSample) # help("networkSample"), for more info
-networkSample <- networkSample[which(networkSample$Day < "2012-01-20"),]
+networkSample <- networkSample[which(networkSample$Day < "2012-03-20"),]
 
 var.names <- list(from = 'originID', to = 'destinationID', Time = 'Day',
                   arc = 'num.animals')
@@ -135,15 +135,16 @@ names(init.cond) <- paste('S', unique(c(networkSample$originID,
 init.cond <- c(init.cond, c(I36811 = 10, I36812 = 10)) # adding infection
                   
 # running simulations, check num of cores available (num.cores)
-sim.results <- hybridModel(network = networkSample, var.names = var.names,
-                           model.parms = model.parms, state.var = state.var,
-                           infl.var = infl.var, prop.func = prop.func,
-                           init.cond = init.cond,
-                           state.change.matrix = state.change.matrix,
-                           sim.number = 2, num.cores = 2)
+# Uncomment to run
+# sim.results <- hybridModel(network = networkSample, var.names = var.names,
+#                            model.parms = model.parms, state.var = state.var,
+#                            infl.var = infl.var, prop.func = prop.func,
+#                            init.cond = init.cond,
+#                            state.change.matrix = state.change.matrix,
+#                            sim.number = 2, num.cores = 2)
 
 # default plot layout (plot.types: 'pop.mean', 'subpop', or 'subpop.mean')
-plot(sim.results, plot.type = 'subpop.mean')
+# plot(sim.results, plot.type = 'subpop.mean')
 
 }
 \references{

@@ -3,9 +3,11 @@ hybridModels 0.2.15
 
 * adding few short comments
 
-* adding date option in summary method.
+* adding date option in summary method
 
-* updating summary documentation.
+* updating summary documentation
+
+* updating description field
 
 hybridModels 0.2.14
 =================

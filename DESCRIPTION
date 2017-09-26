@@ -16,7 +16,14 @@ Imports:
     stringr,
     grid
 Description: Simulates stochastic hybrid models for transmission of infectious
-    diseases in dynamic networks.
+    diseases in dynamic networks. It is a metapopulation model in which each
+    node in the network is a sub-population and disease spreads within nodes
+    and among them, combining two approaches: stochastic simulation algorithm
+    or its approximations (Gillespie DT (2007)
+    <doi:10.1146/annurev.physchem.58.032806.104637>) and individual-based
+    approach, respectively. Movement among nodes are data based and can be
+    irregular. Equations that models spread within nodes are customizable and
+    there are two link types among nodes: migration and influence (commuting).
 LazyLoad: true
 LazyData: true
 Authors@R: c(person(given = "Fernando", family = "S. Marques",

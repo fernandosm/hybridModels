@@ -1,7 +1,7 @@
 Package: hybridModels
 Version: 0.2.15
 Title: Stochastic Hybrid Models in Dynamic Networks
-Date: 2017-07-21
+Date: 2017-09-26
 License: GPL (>= 2)
 Depends:
     R (>= 3.3.1),

@@ -4,8 +4,9 @@
 \alias{buildModelClass}
 \title{It builds an object of a pre-specified class.}
 \usage{
-buildModelClass(x, var.names, init.cond, model.parms, prop.func = NULL,
-  state.var = NULL, infl.var = NULL, state.change.matrix = NULL)
+buildModelClass(x, var.names, init.cond, model.parms, probWeights, emigrRule,
+  prop.func = NULL, state.var = NULL, infl.var = NULL,
+  state.change.matrix = NULL)
 }
 \arguments{
 \item{x}{is an empty object of a class requested.}
@@ -18,6 +19,16 @@ The variables names must be "from", "to", "Time" and "arc", respectively.}
 \item{init.cond}{a named \code{\link{vector}} with initial conditions.}
 
 \item{model.parms}{a named \code{\link{vector}} with model's parameters.}
+
+\item{probWeights}{a named \code{\link{vector}} (optinal and for migration only)
+mapping state variables to migration probability weights based on state
+variables. These argument can be used to give weights for sampling
+individuals from node. They need not sum to one, they should be
+non-negative and not zero.}
+
+\item{emigrRule}{a string (optinal and for migration only) stating how many
+individual migrate based on state variables. It requires that the
+network have weights instead of number of individuals that migrate.}
 
 \item{prop.func}{a character \code{\link{vector}} with propensity functions
 of a generic node. See references for more details}

@@ -5,16 +5,17 @@
 \title{Hybrid model simulation.}
 \usage{
 hybridModel(network, var.names = NULL, link.type = "migration",
-  model = "custom", init.cond, fill.time = F, model.parms,
-  prop.func = NULL, state.var = NULL, infl.var = NULL,
-  state.change.matrix = NULL, ssa.method = list(method = "D", epsilon =
-  0.03, nc = 10, dtf = 10, nd = 100), nodesCensus = NULL, sim.number = 1,
-  pop.correc = TRUE, num.cores = "max")
+  model = "custom", probWeights = NULL, emigrRule = NULL, init.cond,
+  fill.time = F, model.parms, prop.func = NULL, state.var = NULL,
+  infl.var = NULL, state.change.matrix = NULL, ssa.method = list(method =
+  "D", epsilon = 0.03, nc = 10, dtf = 10, nd = 100), nodesCensus = NULL,
+  sim.number = 1, pop.correc = TRUE, num.cores = "max")
 }
 \arguments{
 \item{network}{a \code{\link{data.frame}} with variables that describe
 the donor node, the reciever node, the time when each connection between
-donor to the reciever happened and the weight of these connection.}
+donor to the reciever happened and the number of individual or weight of
+these connection.}
 
 \item{var.names}{a \code{\link{list}} with variable names of the network:
 the donor node, the reciever node, the time when each connection between
@@ -27,6 +28,16 @@ link type there are actual migration between nodes. In the influence
 link type individuals does not migrate, just influences another node.}
 
 \item{model}{a \code{\link{character}} describing model's name.}
+
+\item{probWeights}{a named \code{\link{vector}} (optinal and for migration only)
+mapping state variables to migration probability weights based on state
+variables. These argument can be used to give weights for sampling
+individuals from node. They need not sum to one, they should be
+non-negative and not zero.}
+
+\item{emigrRule}{a string (optinal and for migration only) stating how many
+individual migrate based on state variables. It requires that the
+network have weights instead of number of individuals that migrate.}
 
 \item{init.cond}{a named \code{\link{vector}} with initial conditions.}
 

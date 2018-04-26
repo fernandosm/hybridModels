@@ -11,7 +11,8 @@ simHM(x, network, sim.number, num.cores = "max", fill.time)
 
 \item{network}{a \code{\link{data.frame}} with variables that describe
 the donor node, the reciever node, the time when each connection between
-donor to the reciever happened and the weight of these connection.}
+donor to the reciever happened and the number of individual or weight of
+these connection.}
 
 \item{sim.number}{Number of repetitions.The default value is 1}
 

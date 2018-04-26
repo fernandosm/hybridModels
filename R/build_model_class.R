@@ -11,6 +11,6 @@
 #' 
 #' @export
 #' @references .
-buildModelClass <- function(x, var.names, init.cond, model.parms,
-                            prop.func = NULL, state.var = NULL, infl.var = NULL,
-                            state.change.matrix = NULL) UseMethod("buildModelClass")
+buildModelClass <- function(x, var.names, init.cond, model.parms, probWeights,
+                            emigrRule, prop.func = NULL, state.var = NULL,
+                            infl.var = NULL, state.change.matrix = NULL) UseMethod("buildModelClass")

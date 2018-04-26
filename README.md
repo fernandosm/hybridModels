@@ -1,6 +1,6 @@
 Hybrid Models
 ====
-Version: 0.2.15
+Version: 0.3.0
 
 ___
 
@@ -16,7 +16,7 @@ It is possible to use one of the options below to install the package:
 install.packages("hybridModels")
 ```
 
-* Making use of the devtools package (Hadley Wickham and Winston Chang (2015). devtools: Tools to Make Developing R Packages Easier. R package version 1.10.0 or higher, http://CRAN.R-project.org/package=devtools).
+* Making use of the devtools package (Hadley Wickham and Winston Chang (2015). devtools: Tools to Make Developing R Packages Easier. R package version 1.13.5 or higher, http://CRAN.R-project.org/package=devtools).
 
 > Through github and devtools
 ```
@@ -28,7 +28,7 @@ install_github("fernandosm/hybridModels")
 
 The current version runs:
 
-* Customizable hybrid model in dynamic networks in which migration is the link type between nodes.
+* Customizable hybrid model in dynamic networks in which migration is the link type between nodes. Using this link type allows user to create rules that compute the number of individuals that emigrate and the probability weight of a individual of a certain state to emigrate.
 
 * Customizable hybrid model in dynamic networks in which influence is the link type between nodes.
 

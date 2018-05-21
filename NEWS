@@ -1,3 +1,13 @@
+hybridModels 0.3.1
+=================
+
+* Documentation fix
+
+* emigrRule: bug fix
+
+* emigrRule: caveat fix, nodes get in line randomly to recieve imigrants 
+
+
 hybridModels 0.3.0
 =================
 

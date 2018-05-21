@@ -54,14 +54,15 @@
 #'        default value is num.cores = 'max', the algothim will use all
 #'        threads/cores available.
 #' 
-#' @param probWeights a named \code{\link{vector}} (optinal and for migration only)
-#'        mapping state variables to migration probability weights based on state
-#'        variables. These argument can be used to give weights for sampling
+#' @param probWeights a named \code{\link{vector}} (optinal and for migration type
+#'        only) mapping state variables to migration probability weights based on
+#'        state variables. These argument can be used to give weights for sampling
 #'        individuals from node. They need not sum to one, they should be
-#'        non-negative and not zero.
+#'        non-negative and not zero. For more information on the sampling method
+#'        \link[base]{sample}.
 #'        
-#' @param emigrRule a string (optinal and for migration only) stating how many
-#'        individual migrate based on state variables. It requires that the
+#' @param emigrRule a string (optinal and for migration type only) stating how
+#'        many individual emigrate based on state variables. It requires that the
 #'        network have weights instead of number of individuals that migrate.
 #'
 #' @return Object containing a \code{\link{data.frame}} (results) with the number

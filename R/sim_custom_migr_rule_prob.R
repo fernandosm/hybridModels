@@ -37,65 +37,66 @@ simHM.customEmigrRuleWeight <- function(x, network, sim.number, num.cores, fill.
           colnames(temp) <- state.var
           return(eval(parse(text=emigrRule), temp))})
         
-        ### sampling from nodes ###
-        # vector with emigrants tagged by its state, e.g., S or I
-        sampled <- apply(emigrants, 1,
-                         function(x){
-                           num <- sim.result[tempo, paste(state.var, x[1], sep = '')]
-                           colnames(num) <- state.var
-                           probW <- lapply(probWeights, function(x) eval(parse(text=x), num))
-                           sampled <- sample(sample(rep(state.var, num), x[3], replace = F,
-                                             prob = rep(probW[state.var], num)))})
-        if (is.matrix(sampled) == T)
-          sampled <- as.list(data.frame(sampled, stringsAsFactors = F))
-        names(sampled) <- emigrants[,1]
-        
-        # ----------- Randomly distributing individuals -------------
-        # connected.nodes is a data frame with the connected nodes in the time tempo
-        connected.nodes <-
-          stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
-                                   c(from,arc)][, arc],
-                           by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
-                                             c(from,arc)][, from],
-                                     network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
-                                             c(to,arc)][, to]),
-                           FUN = sum)
-        colnames(connected.nodes) <- c(from, to, arc)
-        connected.nodes[, state.var] <- 0
-        
-        # distribution of individuals
-        for(donor.node in emigrants[, from]){
+        if (sum(emigrants$emi) != 0){
+          ### sampling from nodes ###
+          # vector with emigrants tagged by its state, e.g., S or I
+          sampled <- apply(emigrants, 1,
+                           function(x){
+                             num <- sim.result[tempo, paste(state.var, x[1], sep = '')]
+                             colnames(num) <- state.var
+                             probW <- lapply(probWeights, function(x) eval(parse(text=x), num))
+                             sampled <- sample(sample(rep(state.var, num), x[3], replace = F,
+                                                      prob = rep(probW[state.var], num)))})
+          if (is.matrix(sampled) == T)
+            sampled <- as.list(data.frame(sampled, stringsAsFactors = F))
+          names(sampled) <- emigrants[,1]
           
-          first <- 1
-          last <- 0
-          d <- which(emigrants[, from] == donor.node)
-          for(reciever.node in which(connected.nodes[ , from] == donor.node)){
-            a <- ceiling(connected.nodes[reciever.node, arc] * emigrants$emi[d] / emigrants[d, arc])
-            last <- last + a
+          # ----------- Randomly distributing individuals -------------
+          # connected.nodes is a data frame with the connected nodes in the time tempo
+          connected.nodes <-
+            stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+                                     c(from,arc)][, arc],
+                             by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+                                               c(from,arc)][, from],
+                                       network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+                                               c(to,arc)][, to]),
+                             FUN = sum)
+          colnames(connected.nodes) <- c(from, to, arc)
+          connected.nodes[, state.var] <- 0
+          
+          # distribution of individuals
+          for(donor.node in sample(emigrants[, from])){
             
-            connected.nodes[reciever.node, state.var] <- 
-              apply(as.matrix(state.var), 1,
-                    function(x){
-                      length(which(sampled[as.character(donor.node)][[1]][first:last] == x))})
-            
-            first <- first + a
+            first <- 1
+            last <- 0
+            d <- which(emigrants[, from] == donor.node)
+            for(reciever.node in which(connected.nodes[ , from] == donor.node)){
+              a <- ceiling(connected.nodes[reciever.node, arc] * emigrants$emi[d] / emigrants[d, arc])
+              last <- last + a
+              
+              connected.nodes[reciever.node, state.var] <- 
+                apply(as.matrix(state.var), 1,
+                      function(x){
+                        length(which(sampled[as.character(donor.node)][[1]][first:last] == x))})
+              
+              first <- first + a
+            }
           }
+          
+          # balancing and # updating state variables
+          connected.emigrants <- stats::aggregate(connected.nodes[, state.var],
+                                                  by = list(connected.nodes[, from]), sum)
+          connected.imigrants <- stats::aggregate(connected.nodes[, state.var],
+                                                  by = list(connected.nodes[, to]), sum)
+          
+          ssaObject$x0[as.vector(apply(as.matrix(state.var), 1, function(x)
+            paste(x, connected.emigrants[,'Group.1'], sep = '')))] <- as.vector(t(apply(connected.emigrants, 1, function(x){
+              ssaObject$x0[paste(state.var, x['Group.1'], sep = '')] - as.numeric(x[state.var])})))
+          
+          ssaObject$x0[as.vector(apply(as.matrix(state.var), 1, function(x)
+            paste(x, connected.imigrants[,'Group.1'], sep = '')))] <- as.vector(t(apply(connected.imigrants, 1, function(x){
+              ssaObject$x0[paste(state.var, x['Group.1'], sep = '')] + as.numeric(x[state.var])})))
         }
-        
-        # balancing and # updating state variables
-        connected.emigrants <- stats::aggregate(connected.nodes[, state.var],
-                                                by = list(connected.nodes[, from]), sum)
-        connected.imigrants <- stats::aggregate(connected.nodes[, state.var],
-                                                by = list(connected.nodes[, to]), sum)
-        
-        ssaObject$x0[as.vector(apply(as.matrix(state.var), 1, function(x)
-          paste(x, connected.emigrants[,'Group.1'], sep = '')))] <- as.vector(t(apply(connected.emigrants, 1, function(x){
-            ssaObject$x0[paste(state.var, x['Group.1'], sep = '')] - as.numeric(x[state.var])})))
-        
-        ssaObject$x0[as.vector(apply(as.matrix(state.var), 1, function(x)
-          paste(x, connected.imigrants[,'Group.1'], sep = '')))] <- as.vector(t(apply(connected.imigrants, 1, function(x){
-            ssaObject$x0[paste(state.var, x['Group.1'], sep = '')] + as.numeric(x[state.var])})))
-        
         # checking whether will be another trade
         out.sim <- GillespieSSA::ssa(x0 = ssaObject$x0, a = ssaObject$propFunction, nu = ssaObject$sCMatrix,
                                      parms = ssaObject$parms, tf = ssaObject$time.diff[tempo],

@@ -23,10 +23,10 @@ simHM.customMigr <- function(x, network, sim.number, num.cores, fill.time){
         # emigrants
         emigrants <- 
           stats::aggregate(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
-                            c(from,arc)][, arc],
-                    by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
-                                      c(from,arc)][, from]),
-                    FUN = sum)
+                                   c(from, arc)][, arc],
+                           by = list(network[which(network[, Time] == ssaObject[['mov.dates']][tempo]),
+                                             c(from, arc)][, from]),
+                           FUN = sum)
         colnames(emigrants) <- c(from, arc)
         
         ### sampling from nodes ###

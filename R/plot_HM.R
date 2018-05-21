@@ -15,7 +15,8 @@
 #'        
 #' @param plot.type plots the mean number of each state variable for the whole
 #'        population ('pop.mean'), or the subpopulations of a particular
-#'        simulation ('subpop'), or the mean of each subpopulation ('subpop.mean').
+#'        simulation ('subpop', default value), or the mean of each subpopulation
+#'        ('subpop.mean').
 #'        
 #' @param ... arguments to be passed to methods.
 #' 

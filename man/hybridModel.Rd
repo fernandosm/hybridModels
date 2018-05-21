@@ -29,14 +29,15 @@ link type individuals does not migrate, just influences another node.}
 
 \item{model}{a \code{\link{character}} describing model's name.}
 
-\item{probWeights}{a named \code{\link{vector}} (optinal and for migration only)
-mapping state variables to migration probability weights based on state
-variables. These argument can be used to give weights for sampling
+\item{probWeights}{a named \code{\link{vector}} (optinal and for migration type
+only) mapping state variables to migration probability weights based on
+state variables. These argument can be used to give weights for sampling
 individuals from node. They need not sum to one, they should be
-non-negative and not zero.}
+non-negative and not zero. For more information on the sampling method
+\link[base]{sample}.}
 
-\item{emigrRule}{a string (optinal and for migration only) stating how many
-individual migrate based on state variables. It requires that the
+\item{emigrRule}{a string (optinal and for migration type only) stating how
+many individual emigrate based on state variables. It requires that the
 network have weights instead of number of individuals that migrate.}
 
 \item{init.cond}{a named \code{\link{vector}} with initial conditions.}

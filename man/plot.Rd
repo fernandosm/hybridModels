@@ -15,7 +15,8 @@
 
 \item{plot.type}{plots the mean number of each state variable for the whole
 population ('pop.mean'), or the subpopulations of a particular
-simulation ('subpop'), or the mean of each subpopulation ('subpop.mean').}
+simulation ('subpop', default value), or the mean of each subpopulation
+('subpop.mean').}
 
 \item{facet.scales}{should scales be fixed ("free_y", the default), free ("free"), or free
 in one dimension ("free_x", "free_y"). See ggplot2 package for more

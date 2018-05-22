@@ -1,3 +1,8 @@
+hybridModels 0.3.2
+=================
+
+* emigrRule: bug fix in variable emigrants$emi
+
 hybridModels 0.3.1
 =================
 

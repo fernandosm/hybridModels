@@ -32,10 +32,11 @@ simHM.customEmigrRuleWeight <- function(x, network, sim.number, num.cores, fill.
         colnames(emigrants) <- c(from, arc)
         
         # eval emigrants
-        emigrants[, "emi"] <- apply(emigrants, 1, function(x){ 
+        emigrants[, "emi"] <- floor(apply(emigrants, 1, function(x){ 
           temp <- sim.result[tempo, paste(state.var, x[1], sep ='')]
           colnames(temp) <- state.var
-          return(eval(parse(text=emigrRule), temp))})
+          return(eval(parse(text=emigrRule), temp))}))
+        
         
         if (sum(emigrants$emi) != 0){
           ### sampling from nodes ###

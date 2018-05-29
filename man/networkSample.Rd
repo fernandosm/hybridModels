@@ -4,7 +4,7 @@
 \name{networkSample}
 \alias{networkSample}
 \title{Daily record of animal's movement (from 2012 to 2013).}
-\format{A data frame with 78 rows and 5 variables:
+\format{A data frame with 78 rows and 4 variables:
 \itemize{
   \item Day: The day when the movement occurs
   \item originID: The ID of the origin premises

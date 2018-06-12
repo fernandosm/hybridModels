@@ -1,4 +1,5 @@
 buildModelClass.customInfl <- function(x, var.names, init.cond, model.parms,
+                                       probWeights, emigrRule,
                                        prop.func, state.var, infl.var,
                                        state.change.matrix){
   
@@ -14,6 +15,17 @@ buildModelClass.customInfl <- function(x, var.names, init.cond, model.parms,
   time.diff <- c(as.numeric(mov.dates[2:length(mov.dates)] -
                               mov.dates[1:(length(mov.dates)-1)]),1)
   
+    #### ssa methods ####
+  if (is.null(x$ssa.method)){
+    x$ssa.method <- list(method = "D", tau = 0.3, f = 10, epsilon = 0.03,
+                         nc = 10, hor = NaN, dtf = 10, nd = 100)
+  } else{
+    userdef <- x$ssa.method
+    x$ssa.method <- list(method = "D", tau = 0.3, f = 10, epsilon = 0.03,
+                         nc = 10, hor = NaN, dtf = 10, nd = 100)
+    
+    x$ssa.method[names(userdef)] <- userdef
+  }
   
   #### building propensity functions and x0 ####
   propFunc <- character()
@@ -71,9 +83,9 @@ buildModelClass.customInfl <- function(x, var.names, init.cond, model.parms,
   results <- rbind(results, results[length(mov.dates),])
   results[(length(mov.dates) + 1), var.names$Time] <- mov.dates[length(mov.dates)] + 1
   
-  
   return(structure(list(ssaObjet = list(propFunction = propFunc, x0 = x0,
                                         sCMatrix = scMatrix, parms = model.parms,
+                                        probWeights = probWeights, emigrRule = emigrRule,
                                         mov.dates = mov.dates, time.diff = time.diff,
                                         number.nodes = number.nodes,
                                         infl.var = infl.var, var.names = var.names,

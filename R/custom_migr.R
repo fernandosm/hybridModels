@@ -14,6 +14,18 @@ buildModelClass.customMigr <- function(x, var.names, init.cond, model.parms,
                               mov.dates[1:(length(mov.dates)-1)]),1)
   
   
+  #### ssa methods ####
+  if (is.null(x$ssa.method)){
+    x$ssa.method <- list(method = "D", tau = 0.3, f = 10, epsilon = 0.03,
+                         nc = 10, hor = NaN, dtf = 10, nd = 100)
+  } else{
+    userdef <- x$ssa.method
+    x$ssa.method <- list(method = "D", tau = 0.3, f = 10, epsilon = 0.03,
+                         nc = 10, hor = NaN, dtf = 10, nd = 100)
+    
+    x$ssa.method[names(userdef)] <- userdef
+  }
+  
   #### building propensity functions and x0 ####
   propFunc <- character()
   x0 <- integer(number.nodes * number.statVar)

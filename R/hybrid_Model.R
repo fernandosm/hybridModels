@@ -150,13 +150,12 @@
 #' # default plot layout (plot.types: 'pop.mean', 'subpop', or 'subpop.mean')
 #' # plot(sim.results, plot.type = 'subpop.mean')
 #'
-hybridModel <-   function(network, var.names = NULL, link.type = 'migration',
-                          model = 'custom', probWeights = NULL, emigrRule = NULL,
-                          init.cond, fill.time = F,
-                          model.parms, prop.func = NULL, state.var = NULL,
-                          infl.var = NULL, state.change.matrix = NULL,
-                          ssa.method = list(method = "D", epsilon = 0.03,
-                                            nc = 10, dtf = 10, nd = 100),
+hybridModel <-   function(network = stop("undefined 'network'"), var.names = NULL,
+                          link.type = 'migration', model = 'custom', probWeights = NULL,
+                          emigrRule = NULL, init.cond = stop("undefined 'initial conditions'"),
+                          fill.time = F, model.parms = stop("undefined 'model parmeters'"),
+                          prop.func = NULL, state.var = NULL, infl.var = NULL,
+                          state.change.matrix = NULL, ssa.method = NULL,
                           nodesCensus = NULL, sim.number = 1, pop.correc = TRUE,
                           num.cores = 'max'){
   

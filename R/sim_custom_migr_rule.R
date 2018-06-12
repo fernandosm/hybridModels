@@ -99,8 +99,10 @@ simHM.customEmigrRule <- function(x, network, sim.number, num.cores, fill.time){
         out.sim <- GillespieSSA::ssa(x0 = ssaObject$x0, a = ssaObject$propFunction, nu = ssaObject$sCMatrix,
                                      parms = ssaObject$parms, tf = ssaObject$time.diff[tempo],
                                      censusInterval = 0, verbose = FALSE, method = ssaObject$ssa.method$method,
+                                     tau = ssaObject$ssa.method$tau, f = ssaObject$ssa.method$f,
                                      epsilon = ssaObject$ssa.method$epsilon, nc = ssaObject$ssa.method$nc,
-                                     dtf = ssaObject$ssa.method$dtf, nd = ssaObject$ssa.method$nd)$data
+                                     hor = ssaObject$ssa.method$hor, dtf = ssaObject$ssa.method$dtf,
+                                     nd = ssaObject$ssa.method$nd)$data
         
         out.sim <- out.sim[(length(out.sim[,1])-2), -1]
         

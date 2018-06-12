@@ -1,3 +1,13 @@
+hybridModels 0.3.4
+=================
+
+* ssa methods were fixed in the following files:
+  custom_inf, custom_migr, sim_custom_migr, sim_custom_migr_prob,
+  sim_custom_migr_rule, sim_custom_migr_rule_prob, hybrid_Model
+
+* Adding stop messages to arguments in hybriModel function
+
+
 hybridModels 0.3.3
 =================
 

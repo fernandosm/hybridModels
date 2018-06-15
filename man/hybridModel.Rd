@@ -6,8 +6,8 @@
 \usage{
 hybridModel(network = stop("undefined 'network'"), var.names = NULL,
   link.type = "migration", model = "custom", probWeights = NULL,
-  emigrRule = NULL, init.cond = stop("undefined 'init.cond'"),
-  fill.time = F, model.parms = stop("undefined 'model.parms'"),
+  emigrRule = NULL, init.cond = stop("undefined 'initial conditions'"),
+  fill.time = F, model.parms = stop("undefined 'model parmeters'"),
   prop.func = NULL, state.var = NULL, infl.var = NULL,
   state.change.matrix = NULL, ssa.method = NULL, nodesCensus = NULL,
   sim.number = 1, pop.correc = TRUE, num.cores = "max")

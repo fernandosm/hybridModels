@@ -1,4 +1,4 @@
-#' @import foreach
+#' @import foreach doRNG
 #' 
 simHM.customInfl<- function(x, network, sim.number, num.cores, fill.time){
   
@@ -114,7 +114,7 @@ simHM.customInfl<- function(x, network, sim.number, num.cores, fill.time){
     sims <- NULL
 
     sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
-                          .packages = 'GillespieSSA') %dopar% (parallelCustomInfl())
+                          .packages = 'GillespieSSA') %dorng% (parallelCustomInfl())
     
     parallel::stopCluster(cl)
     

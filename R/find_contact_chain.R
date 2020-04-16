@@ -16,21 +16,22 @@
 #' @param selected.nodes \code{\link{vector}}, the function will find the contact
 #'        chain of the nodes present in the selected.nodes vector.
 #' 
-#' @param type \code{\link{character}}, of returned reuslt. Type = 'size' (default),
+#' @param type \code{\link{character}}, of returned result. type = 'size' (default),
 #'        will return the size of 'outgoing' and 'ingoing' contact chains.
 #'        Type = 'chain' will return also the nodes in each chain (might be slow
-#'        for hugh data sets).
+#'        for big data sets).
 #' 
 #' @param numberOfcores \code{\link{integer}}, number of cores used to calculate
-#'        the contact chain (default is NULL, that will lead the algotrithm to
+#'        the contact chain (default is NULL, that will lead the algorithm to
 #'        use the max number of cores).
 #' 
 #' @details This is a function that find elements of a contact chain from a dynamic
 #'          network.
 #' 
-#' @return a \code{\link{data.frame}} with ingoing and outgoing contact chains size.
-#'         or \code{\link{list}} with the data frame and elements of ingoing and
-#'         outgoing chains.
+#' @return setting type = 'size', it returns a \code{\link{data.frame}} with ingoing
+#'         and outgoing contact chains size, add 1 to include the selected.nodes.
+#'         Setting type = 'chain', it returns a \code{\link{list}} with the data
+#'         frame and elements of ingoing and outgoing chains.
 #' 
 #' @references 
 #' [1] K Buttner, J Krieter, and I Traulsen. Characterization of Contact Structures
@@ -44,7 +45,7 @@
 #'     In: Transboundary and emerging diseases 55.9-10 (Dec. 2008), pp. 382-392.
 #'     
 #' [3] C Dube, C Ribble, D Kelton, et al. A review of network analysis terminology
-#'     and its application to foot-and-mouth disease modelling and policy development.
+#'     and its application to foot-and-mouth disease modeling and policy development.
 #'     In: Transboundary and emerging diseases 56.3 (Apr. 2009), pp. 73-85.
 #'     
 #' [4] Jenny Frossling, Anna Ohlson, Camilla Bjorkman, et al. Application of
@@ -77,7 +78,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
   n <- NULL
   
   #### Extracting, trasforming and loading the data base #####
-  Data <- Data[,c(from, to, Time)]
+  Data <- Data[, c(from, to, Time)]
   
   # creating a new ID for 'to'
   ordered.ID <- sort(unique(c(Data[, from], Data[, to])))
@@ -91,7 +92,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
   # creating a new ID for 'from'
   colnames(newID)[2] <- from
   Data <- merge(Data, newID, by = from)
-  Data <- Data[,-which(colnames(Data) == from)] 
+  Data <- Data[, -which(colnames(Data) == from)] 
   colnames(Data)[which(colnames(Data) == 'newID')] <- from
   
   # creating a new ID for 'selected.nodes'
@@ -101,7 +102,7 @@ findContactChain <- function(Data, from, to, Time, selected.nodes,
   
   #### pre-processing for parallel function  ####
   mov.time <- sort(unique(Data[,Time]))
-  mov.time2 <- sort(mov.time,decreasing = T)
+  mov.time2 <- sort(mov.time, decreasing = T)
   tamanho <- length(mov.time)
   
   # Creating an ordered list

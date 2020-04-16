@@ -1,3 +1,11 @@
+hybridModels 0.3.6
+=================
+
+* Using doRNG package tto perform reproducible parallel foreach loops:
+  sim_*.R
+  
+* Documentation mistakes.
+
 hybridModels 0.3.5
 =================
 

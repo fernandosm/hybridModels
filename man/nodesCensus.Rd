@@ -4,11 +4,13 @@
 \name{nodesCensus}
 \alias{nodesCensus}
 \title{Information about animal premises (from 2012 to 2013).}
-\format{A data frame with 507 rows and 2 variables:
+\format{
+A data frame with 507 rows and 2 variables:
 \itemize{
   \item nodes.ID: The ID of the premises
   \item pop: premises's population size
-}}
+}
+}
 \usage{
 nodesCensus
 }

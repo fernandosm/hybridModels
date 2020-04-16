@@ -5,8 +5,7 @@
 \alias{plot.HM}
 \title{Summary plots for hybrid Models}
 \usage{
-\method{plot}{HM}(x, sim = 1, plot.type = "subpop",
-  facet.scales = "free_y", ...)
+\method{plot}{HM}(x, sim = 1, plot.type = "subpop", facet.scales = "free_y", ...)
 }
 \arguments{
 \item{x}{\code{HM} object}

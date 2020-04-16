@@ -5,8 +5,7 @@
 \alias{summary.HM}
 \title{summary for hybrid models}
 \usage{
-\method{summary}{HM}(object, at = NULL, stateVars = NULL, nodes = NULL,
-  ...)
+\method{summary}{HM}(object, at = NULL, stateVars = NULL, nodes = NULL, ...)
 }
 \arguments{
 \item{object}{\code{HM} object}

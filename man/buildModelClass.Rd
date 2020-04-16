@@ -4,30 +4,39 @@
 \alias{buildModelClass}
 \title{It builds an object of a pre-specified class.}
 \usage{
-buildModelClass(x, var.names, init.cond, model.parms, probWeights, emigrRule,
-  prop.func = NULL, state.var = NULL, infl.var = NULL,
-  state.change.matrix = NULL)
+buildModelClass(
+  x,
+  var.names,
+  init.cond,
+  model.parms,
+  probWeights,
+  emigrRule,
+  prop.func = NULL,
+  state.var = NULL,
+  infl.var = NULL,
+  state.change.matrix = NULL
+)
 }
 \arguments{
 \item{x}{is an empty object of a class requested.}
 
 \item{var.names}{a \code{\link{list}} with variable names of the network:
-the donor node, the reciever node, the time when each connection between
-donor to the reciever happened and the weight of these connection.
+the donor node, the receiver node, the time when each connection between
+donor to the receiver happened and the weight of these connection.
 The variables names must be "from", "to", "Time" and "arc", respectively.}
 
 \item{init.cond}{a named \code{\link{vector}} with initial conditions.}
 
 \item{model.parms}{a named \code{\link{vector}} with model's parameters.}
 
-\item{probWeights}{a named \code{\link{vector}} (optinal and for migration type
+\item{probWeights}{a named \code{\link{vector}} (optional and for migration type
 only) mapping state variables to migration probability weights based on
 state variables. These argument can be used to give weights for sampling
 individuals from node. They need not sum to one, they should be
 non-negative and not zero. For more information on the sampling method
 \link[base]{sample}.}
 
-\item{emigrRule}{a string (optinal and for migration type only) stating how
+\item{emigrRule}{a string (optional and for migration type only) stating how
 many individual emigrate based on state variables. It requires that the
 network have weights instead of number of individuals that migrate.}
 

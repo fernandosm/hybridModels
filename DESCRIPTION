@@ -1,12 +1,13 @@
 Package: hybridModels
-Version: 0.3.5
+Version: 0.3.6
 Title: Stochastic Hybrid Models in Dynamic Networks
-Date: 2018-06-15
+Date: 2020-04-15
 License: GPL (>= 2)
 Depends:
     R (>= 3.3.1),
 Imports:
     doParallel,
+    doRNG,
     foreach,
     ggplot2,
     GillespieSSA,
@@ -38,4 +39,4 @@ Author: Fernando S. Marques [aut, cre],
 Maintainer: Fernando S. Marques <fernandosix@gmail.com>
 URL: https://github.com/fernandosm/hybridModels
 BugReports: https://github.com/fernandosm/hybridModels/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0

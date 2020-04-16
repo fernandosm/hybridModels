@@ -1,4 +1,4 @@
-#' @import foreach
+#' @import foreach doRNG
 #' 
 simHM.siWoDemogrMigr <- function(x, network, sim.number, num.cores){
   
@@ -189,7 +189,7 @@ simHM.siWoDemogrMigr <- function(x, network, sim.number, num.cores){
   doParallel::registerDoParallel(cl)
   sims <- NULL
   sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
-                        .packages = 'GillespieSSA') %dopar% (siWoDemogrMigr())
+                        .packages = 'GillespieSSA') %dorng% (siWoDemogrMigr())
   
   parallel::stopCluster(cl)
   

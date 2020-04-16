@@ -10,14 +10,14 @@ simHM(x, network, sim.number, num.cores = "max", fill.time)
 \item{x}{of a specific class of model.}
 
 \item{network}{a \code{\link{data.frame}} with variables that describe
-the donor node, the reciever node, the time when each connection between
-donor to the reciever happened and the number of individual or weight of
+the donor node, the receiver node, the time when each connection between
+donor to the receiver happened and the number of individual or weight of
 these connection.}
 
 \item{sim.number}{Number of repetitions.The default value is 1}
 
 \item{num.cores}{number of  threads/cores that the simulation will use. the
-default value is num.cores = 'max', the algothim will use all
+default value is num.cores = 'max', the Algorithm will use all
 threads/cores available.}
 
 \item{fill.time}{It indicates whether to return all dates or just the dates

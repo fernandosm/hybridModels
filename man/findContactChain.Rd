@@ -4,8 +4,15 @@
 \alias{findContactChain}
 \title{Finding elements in contact chains of a dynamic network.}
 \usage{
-findContactChain(Data, from, to, Time, selected.nodes, type = "size",
-  numberOfcores = NULL)
+findContactChain(
+  Data,
+  from,
+  to,
+  Time,
+  selected.nodes,
+  type = "size",
+  numberOfcores = NULL
+)
 }
 \arguments{
 \item{Data}{\code{\link{data.frame}} with network information: node ID, origin
@@ -21,19 +28,20 @@ in which the link was established between two nodes.}
 \item{selected.nodes}{\code{\link{vector}}, the function will find the contact
 chain of the nodes present in the selected.nodes vector.}
 
-\item{type}{\code{\link{character}}, of returned reuslt. Type = 'size' (default),
+\item{type}{\code{\link{character}}, of returned result. type = 'size' (default),
 will return the size of 'outgoing' and 'ingoing' contact chains.
 Type = 'chain' will return also the nodes in each chain (might be slow
-for hugh data sets).}
+for big data sets).}
 
 \item{numberOfcores}{\code{\link{integer}}, number of cores used to calculate
-the contact chain (default is NULL, that will lead the algotrithm to
+the contact chain (default is NULL, that will lead the algorithm to
 use the max number of cores).}
 }
 \value{
-a \code{\link{data.frame}} with ingoing and outgoing contact chains size.
-        or \code{\link{list}} with the data frame and elements of ingoing and
-        outgoing chains.
+setting type = 'size', it returns a \code{\link{data.frame}} with ingoing
+        and outgoing contact chains size, add 1 to include the selected.nodes.
+        Setting type = 'chain', it returns a \code{\link{list}} with the data
+        frame and elements of ingoing and outgoing chains.
 }
 \description{
 Parallel function to find outgoing and ingoing contact chain
@@ -65,7 +73,7 @@ contact.chain <- findContactChain(Data = networkSample, from = 'originID',
     In: Transboundary and emerging diseases 55.9-10 (Dec. 2008), pp. 382-392.
     
 [3] C Dube, C Ribble, D Kelton, et al. A review of network analysis terminology
-    and its application to foot-and-mouth disease modelling and policy development.
+    and its application to foot-and-mouth disease modeling and policy development.
     In: Transboundary and emerging diseases 56.3 (Apr. 2009), pp. 73-85.
     
 [4] Jenny Frossling, Anna Ohlson, Camilla Bjorkman, et al. Application of

@@ -4,23 +4,36 @@
 \alias{hybridModel}
 \title{Hybrid model simulation.}
 \usage{
-hybridModel(network = stop("undefined 'network'"), var.names = NULL,
-  link.type = "migration", model = "custom", probWeights = NULL,
-  emigrRule = NULL, init.cond = stop("undefined 'initial conditions'"),
-  fill.time = F, model.parms = stop("undefined 'model parmeters'"),
-  prop.func = NULL, state.var = NULL, infl.var = NULL,
-  state.change.matrix = NULL, ssa.method = NULL, nodesCensus = NULL,
-  sim.number = 1, pop.correc = TRUE, num.cores = "max")
+hybridModel(
+  network = stop("undefined 'network'"),
+  var.names = NULL,
+  link.type = "migration",
+  model = "custom",
+  probWeights = NULL,
+  emigrRule = NULL,
+  init.cond = stop("undefined 'initial conditions'"),
+  fill.time = F,
+  model.parms = stop("undefined 'model parmeters'"),
+  prop.func = NULL,
+  state.var = NULL,
+  infl.var = NULL,
+  state.change.matrix = NULL,
+  ssa.method = NULL,
+  nodesCensus = NULL,
+  sim.number = 1,
+  pop.correc = TRUE,
+  num.cores = "max"
+)
 }
 \arguments{
 \item{network}{a \code{\link{data.frame}} with variables that describe
-the donor node, the reciever node, the time when each connection between
-donor to the reciever happened and the number of individual or weight of
+the donor node, the receiver node, the time when each connection between
+donor to the receiver happened and the number of individual or weight of
 these connection.}
 
 \item{var.names}{a \code{\link{list}} with variable names of the network:
-the donor node, the reciever node, the time when each connection between
-donor to the reciever happened and the weight of these connection.
+the donor node, the receiver node, the time when each connection between
+donor to the receiver happened and the weight of these connection.
 The variables names must be "from", "to", "Time" and "arc", respectively.}
 
 \item{link.type}{a \code{\link{character}} describing the link type between 
@@ -30,14 +43,14 @@ link type individuals does not migrate, just influences another node.}
 
 \item{model}{a \code{\link{character}} describing model's name.}
 
-\item{probWeights}{a named \code{\link{vector}} (optinal and for migration type
+\item{probWeights}{a named \code{\link{vector}} (optional and for migration type
 only) mapping state variables to migration probability weights based on
 state variables. These argument can be used to give weights for sampling
 individuals from node. They need not sum to one, they should be
 non-negative and not zero. For more information on the sampling method
 \link[base]{sample}.}
 
-\item{emigrRule}{a string (optinal and for migration type only) stating how
+\item{emigrRule}{a string (optional and for migration type only) stating how
 many individual emigrate based on state variables. It requires that the
 network have weights instead of number of individuals that migrate.}
 
@@ -73,7 +86,7 @@ describing the day of the census.}
 of individuals or not. The default value is TRUE.}
 
 \item{num.cores}{number of  threads/cores that the simulation will use. the
-default value is num.cores = 'max', the algothim will use all
+default value is num.cores = 'max', the Algorithm will use all
 threads/cores available.}
 }
 \value{
@@ -107,7 +120,7 @@ names(init.cond) <- paste('S', unique(c(networkSample$originID,
                                         networkSample$destinationID)), sep = '')
 init.cond <- c(init.cond, c(I36811 = 10, I36812 = 10)) # adding infection
                   
-# running simulations, check num of cores available (num.cores)
+# running simulations, check the number of cores available (num.cores)
 sim.results <- hybridModel(network = networkSample, var.names = var.names,
                            model.parms = model.parms, state.var = state.var,
                            prop.func = prop.func, init.cond = init.cond,

@@ -1,4 +1,4 @@
-#' @import foreach
+#' @import foreach doRNG
 #' 
 simHM.customEmigrRuleWeight <- function(x, network, sim.number, num.cores, fill.time){
   
@@ -126,7 +126,7 @@ simHM.customEmigrRuleWeight <- function(x, network, sim.number, num.cores, fill.
     doParallel::registerDoParallel(cl)
     sims <- NULL
     sim.result <- foreach(sims = 1:sim.number, .verbose=FALSE, .inorder=FALSE,
-                          .packages = 'GillespieSSA') %dopar% (parallelCustomMigr())
+                          .packages = 'GillespieSSA') %dorng% (parallelCustomMigr())
     
     parallel::stopCluster(cl)
     

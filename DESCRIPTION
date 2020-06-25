@@ -1,7 +1,7 @@
 Package: hybridModels
-Version: 0.3.6
-Title: Stochastic Hybrid Models in Dynamic Networks
-Date: 2020-04-15
+Version: 0.3.7
+Title: An R Package for the Stochastic Simulation of Disease Spreading in Dynamic Networks
+Date: 2020-06-25
 License: GPL (>= 2)
 Depends:
     R (>= 3.3.1),
@@ -20,11 +20,11 @@ Description: Simulates stochastic hybrid models for transmission of infectious
     diseases in dynamic networks. It is a metapopulation model in which each
     node in the network is a sub-population and disease spreads within nodes
     and among them, combining two approaches: stochastic simulation algorithm
-    or its approximations (Gillespie DT (2007)
-    <doi:10.1146/annurev.physchem.58.032806.104637>) and individual-based
-    approach, respectively. Movement among nodes are data based and can be
-    irregular. Equations that models spread within nodes are customizable and
-    there are two link types among nodes: migration and influence (commuting).
+    (<doi:10.1146/annurev.physchem.58.032806.104637>) and individual-based
+    approach, respectively. Equations that models spread within nodes are
+    customizable and there are two link types among nodes: migration and
+    influence (commuting). More information in Fernando S. Marques,
+    Jose H. H. Grisi-Filho, Marcos Amaku et al. (2020) <doi:10.18637/jss.v094.i06>.
 LazyLoad: true
 LazyData: true
 Authors@R: c(person(given = "Fernando", family = "S. Marques",

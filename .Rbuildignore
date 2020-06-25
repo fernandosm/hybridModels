@@ -4,3 +4,5 @@ dev_tools
 .gitignore
 .Rhistory
 LICENSE
+^CRAN-RELEASE$
+^cran-comments\.md$

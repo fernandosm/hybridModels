@@ -70,7 +70,13 @@
 #'
 #' @references
 #' [1] Pineda-krch, M. (2008). GillespieSSA : Implementing the Stochastic
-#'     Simulation Algorithm in R. Journal of Statistical Software, 25(12).
+#'     Simulation Algorithm in R. Journal of Statistical Software, Volume 25
+#'     Issue 12 <doi:10.1146/annurev.physchem.58.032806.104637>.
+#'     
+#' [2] Fernando S. Marques, Jose H. H. Grisi-Filho, Marcos Amaku et al.
+#'     hybridModels: An R Package for the Stochastic Simulation of Disease Spreading
+#'     in Dynamic Network. In: Jounal of Statistical Software Volume 94, Issue 6
+#'     <doi:10.18637/jss.v094.i06>.
 #'
 #' @seealso \link{GillespieSSA}.
 #' @export

@@ -34,30 +34,35 @@
 #'         frame and elements of ingoing and outgoing chains.
 #' 
 #' @references 
-#' [1] K Buttner, J Krieter, and I Traulsen. Characterization of Contact Structures
-#'     for the Spread of Infectious Diseases in a Pork Supply Chain in Northern
-#'     Germany by Dynamic Network Analysis of Yearly and Monthly Networks. In:
-#'     Transboundary and emerging diseases 2000 (May 2013), pp. 1-12.
-#'     
-#' [2] C Dube, C Ribble, D Kelton, et al. Comparing network analysis measures to
+#' [1] C Dube, C Ribble, D Kelton, et al. Comparing network analysis measures to
 #'     determine potential epidemic size of highly contagious exotic diseases in
 #'     fragmented monthly networks of dairy cattle movements in Ontario, Canada.
 #'     In: Transboundary and emerging diseases 55.9-10 (Dec. 2008), pp. 382-392.
 #'     
-#' [3] C Dube, C Ribble, D Kelton, et al. A review of network analysis terminology
+#' [2] C Dube, C Ribble, D Kelton, et al. A review of network analysis terminology
 #'     and its application to foot-and-mouth disease modeling and policy development.
 #'     In: Transboundary and emerging diseases 56.3 (Apr. 2009), pp. 73-85.
+#'     
+#' [3] Fernando S. Marques, Jose H. H. Grisi-Filho, Marcos Amaku et al.
+#'     hybridModels: An R Package for the Stochastic Simulation of Disease Spreading
+#'     in Dynamic Network. In: Jounal of Statistical Software Volume 94, Issue 6
+#'     <doi:10.18637/jss.v094.i06>.
 #'     
 #' [4] Jenny Frossling, Anna Ohlson, Camilla Bjorkman, et al. Application of
 #'     network analysis parameters in risk-based surveillance - Examples based
 #'     on cattle trade data and bovine infections in Sweden. In:  Preventive
 #'     veterinary medicine 105.3 (July 2012), pp. 202-208.
-#'     doi: 10.1016/j.prevetmed.2011.12.011.
+#'     <doi:10.1016/j.prevetmed.2011.12.011>.
+#'
+#' [5] K Buttner, J Krieter, and I Traulsen. Characterization of Contact Structures
+#'     for the Spread of Infectious Diseases in a Pork Supply Chain in Northern
+#'     Germany by Dynamic Network Analysis of Yearly and Monthly Networks. In:
+#'     Transboundary and emerging diseases 2000 (May 2013), pp. 1-12.
 #'     
-#' [5] Maria Noremark, Nina Ha kansson, Susanna Sternberg Lewerin, et al.
+#' [6] Maria Noremark, Nina Ha kansson, Susanna Sternberg Lewerin, et al.
 #'     Network analysis of cattle and pig movements in Sweden: measures relevant
 #'     for disease control and risk based surveillance. In: Preventive veterinary
-#'     medicine 99.2-4 (2011), pp. 78-90. doi: 10.1016/j.prevetmed.2010.12.009.
+#'     medicine 99.2-4 (2011), pp. 78-90. <doi:10.1016/j.prevetmed.2010.12.009>.
 #' 
 #' @export
 #' @import foreach

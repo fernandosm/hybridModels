@@ -1,3 +1,9 @@
+hybridModels 0.3.7
+=================
+
+* Adding reference to examples and more detailed material- published in the Journal of Statistical Software
+
+
 hybridModels 0.3.6
 =================
 
@@ -5,6 +11,7 @@ hybridModels 0.3.6
   sim_*.R
   
 * Documentation mistakes.
+
 
 hybridModels 0.3.5
 =================

@@ -67,3 +67,9 @@ plot(sim.results, plot.type = 'subpop.mean')
 #  theme_bw() + theme(axis.title = element_text(size = 14, face = "italic"))
 
 }
+\references{
+[1] Fernando S. Marques, Jose H. H. Grisi-Filho, Marcos Amaku et al.
+    hybridModels: An R Package for the Stochastic Simulation of Disease Spreading
+    in Dynamic Network. In: Jounal of Statistical Software Volume 94, Issue 6
+    <doi:10.18637/jss.v094.i06>.
+}

@@ -61,3 +61,9 @@ sim.results <- hybridModel(network = networkSample, var.names = var.names,
 summary(sim.results, stateVars = c('S', 'I'), nodes = c(36812, 36813))
 
 }
+\references{
+[1] Fernando S. Marques, Jose H. H. Grisi-Filho, Marcos Amaku et al.
+    hybridModels: An R Package for the Stochastic Simulation of Disease Spreading
+    in Dynamic Network. In: Jounal of Statistical Software Volume 94, Issue 6
+    <doi:10.18637/jss.v094.i06>.
+}

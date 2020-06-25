@@ -1,11 +1,22 @@
-year <- sub("-.*", "", meta$Date)
-note <- sprintf("R package version %s", meta$Version)
+bibentry(bibtype = "Article",
+  title        = "{hybridModels}: An {R} Package for the Stochastic Simulation of Disease Spreading in Dynamic Networks",
+  author       = c(person(given = c("Fernando", "S."),
+                          family = "Marques"),
+                   person(given = c("Jos\\'e", "H.", "H."),
+                          family = "Grisi-Filho"),
+                   person(given = c("Jean", "C.", "R."),
+                          family = "Silva"),
+                   person(given = c("Eriv\\^ania", "C."),
+                          family = "Almeida"),
+                   person(given = c("Jos\\'e", "L.", "Silva"),
+                          family = "J\\'unior")),
+  journal      = "Journal of Statistical Software",
+  year         = "2020",
+  volume       = "94",
+  number       = "6",
+  pages        = "1--32",
+  doi          = "10.18637/jss.v094.i06",
 
-bibentry(bibtype = "Manual",
-         title = "{hybridModels}: an R package for stochastic simulation of disease spreading in dynamic networks",
-         author = c(person("Marques", "Fernando S"),
-                    person("Amaku", "Marcos"),
-                    person("Grisi Filho", "Jose H H")),
-         year = year,
-         note = note,
-         url = "https://github.com/fernandosm/hybridModels")
+  header       = "To cite hybridModels in publications use:"
+)
+

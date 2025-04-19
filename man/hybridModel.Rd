@@ -183,6 +183,3 @@ init.cond <- c(init.cond, c(I36811 = 10, I36812 = 10)) # adding infection
     in Dynamic Network. In: Jounal of Statistical Software Volume 94, Issue 6
     <doi:10.18637/jss.v094.i06>.
 }
-\seealso{
-\link{GillespieSSA}.
-}

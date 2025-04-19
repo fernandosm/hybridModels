@@ -1,5 +1,9 @@
+#' @rdname buildModelClass
+#' @export
 buildModelClass.siWoDemogrInfl <- function(x, var.names, init.cond, model.parms,
-                                           prop.func, state.var, state.change.matrix){
+                                           probWeights, emigrRule, prop.func,
+                                           state.var, infl.var, 
+                                           state.change.matrix){
   
   #### args creation ####
   nodes.ID <- sort(unique(c(x$network[, var.names$from],x$network[, var.names$to])))

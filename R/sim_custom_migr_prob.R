@@ -1,5 +1,6 @@
 #' @import foreach doRNG
-#' 
+#' @rdname simHM
+#' @export
 simHM.customProbWeights <- function(x, network, sim.number, num.cores, fill.time){
   
   if (fill.time == F){

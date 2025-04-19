@@ -86,7 +86,7 @@ plot.HM <- function(x, sim = 1, plot.type = 'subpop', facet.scales = 'free_y', .
     return(ggplot2::ggplot(sim.result.plot, ggplot2::aes(x = Time, y = Number,
                                                          group = variable, color = State)) + 
              ggplot2::geom_line(alpha = 0.4, size = 0.3) + ggplot2::ggtitle(paste('Simulation', sim)) +
-             ggplot2::ylab('Number Of Individuals') + ggplot2::guides(color=FALSE) +
+             ggplot2::ylab('Number Of Individuals') + ggplot2::guides(color="none") +
              ggplot2::facet_wrap(~State, ncol = 1, scales = facet.scales) +      
              ggplot2::theme(panel.border = ggplot2::element_rect(colour = "grey", fill = NA),
                             strip.background = ggplot2::element_rect(fill = NA, colour = "grey", size = 0.1),
@@ -112,7 +112,7 @@ plot.HM <- function(x, sim = 1, plot.type = 'subpop', facet.scales = 'free_y', .
     return(ggplot2::ggplot(sim.result.plot, ggplot2::aes(x = Time, y = x,
                                                          group = State, color = State)) + 
              ggplot2::geom_line(size = 0.3) + ggplot2::ggtitle('Population') +
-             ggplot2::ylab('Mean Number Of Individuals') + ggplot2::guides(color=FALSE) +
+             ggplot2::ylab('Mean Number Of Individuals') + ggplot2::guides(color="none") +
              ggplot2::facet_wrap(~State, ncol = 1, scales = facet.scales) +      
              ggplot2::theme(panel.border = ggplot2::element_rect(colour = "grey", fill = NA),
                             strip.background = ggplot2::element_rect(fill = NA, colour = "grey", size = 0.1),
@@ -135,7 +135,7 @@ plot.HM <- function(x, sim = 1, plot.type = 'subpop', facet.scales = 'free_y', .
     return(ggplot2::ggplot(sim.result.plot, ggplot2::aes(x = Time, y = x,
                                                          group = Subpop, color = State)) + 
              ggplot2::geom_line(alpha = 0.4, size = 0.3) + ggplot2::ggtitle('Subpopulations') +
-             ggplot2::ylab('Mean Number Of Individuals') + ggplot2::guides(color=FALSE) +
+             ggplot2::ylab('Mean Number Of Individuals') + ggplot2::guides(color="none") +
              ggplot2::facet_wrap(~State, ncol = 1, scales = facet.scales) +      
              ggplot2::theme(panel.border = ggplot2::element_rect(colour = "grey", fill = NA),
                             strip.background = ggplot2::element_rect(fill = NA, colour = "grey", size = 0.1),

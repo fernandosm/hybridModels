@@ -1,6 +1,7 @@
 #' @import foreach doRNG
-#' 
-simHM.siWoDemogrMigr <- function(x, network, sim.number, num.cores){
+#' @rdname simHM
+#' @export
+simHM.siWoDemogrMigr <- function(x, network, sim.number, num.cores, fill.time){
   
   siWoDemogrMigr <- function(){
     

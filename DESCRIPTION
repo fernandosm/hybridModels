@@ -1,10 +1,11 @@
 Package: hybridModels
-Version: 0.3.7
+Version: 0.3.8
 Title: An R Package for the Stochastic Simulation of Disease Spreading in Dynamic Networks
-Date: 2020-06-25
+Date: 2025-04-18
 License: GPL (>= 2)
+Encoding: UTF-8
 Depends:
-    R (>= 3.3.1),
+    R (>= 4.4.0),
 Imports:
     doParallel,
     doRNG,
@@ -39,4 +40,4 @@ Author: Fernando S. Marques [aut, cre],
 Maintainer: Fernando S. Marques <fernandosix@gmail.com>
 URL: https://github.com/fernandosm/hybridModels
 BugReports: https://github.com/fernandosm/hybridModels/issues
-RoxygenNote: 7.1.0
+RoxygenNote: 7.3.2

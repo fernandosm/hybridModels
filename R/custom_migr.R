@@ -1,3 +1,5 @@
+#' @name buildModelClass
+#' @export
 buildModelClass.customMigr <- function(x, var.names, init.cond, model.parms,
                                        probWeights, emigrRule, prop.func, state.var,
                                        infl.var, state.change.matrix){

@@ -11,7 +11,6 @@
 #'         time per node, per state and per simulation.
 #'
 #' @references  .
-#' @seealso \link{GillespieSSA}.
 #' @export
 #' @import foreach
 simHM <- function(x, network, sim.number, num.cores = 'max', fill.time) UseMethod("simHM")

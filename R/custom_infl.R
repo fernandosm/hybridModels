@@ -1,3 +1,5 @@
+#' @name buildModelClass
+#' @export
 buildModelClass.customInfl <- function(x, var.names, init.cond, model.parms,
                                        probWeights, emigrRule,
                                        prop.func, state.var, infl.var,

@@ -1,3 +1,13 @@
+hybridModels 0.3.8
+=================
+
+* Updates plot method
+
+* Fixed S3 method registration in NAMESPACE
+
+* Replaced deprecated doctype tag and removed unused references
+
+
 hybridModels 0.3.7
 =================
 

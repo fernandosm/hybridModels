@@ -1,23 +1,21 @@
 ## Test environments
-* local R installation, R 3.6.3
-* ubuntu 16.04 (on travis-ci), R 3.6.3
-* Windows Server 2008 R2 SP1, R-devel, 32/64 bit
-* Ubuntu Linux 16.04 LTS, R-release, GCC
-* Fedora Linux, R-devel, clang, gfortran
-* win_builder x86_64-w64-mingw32 R version 4.0.2 64bit
-* win_builder R Under development (unstable) (2020-06-24 r78745) platform: x86_64-w64-mingw32 (64-bit)
-
+* Ubuntu 24.04.2 LTS, R version 4.5.0 (2025-04-11), platform: x86_64-pc-linux-gnu
+  - R was compiled by
+       gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+       GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* Windows Server 2022 x64, R Under development (unstable) (2025-04-18 r88159 ucrt) platform: x86_64-w64-mingw32
+  - R was compiled by
+      gcc.exe (GCC) 14.2.0
+      GNU Fortran (GCC) 14.2.0
+* Windows Server 2022 x64 (build 20348), R version 4.5.0 (2025-04-11 ucrt), platform: x86_64-w64-mingw32
+  - R was compiled by
+      gcc.exe (GCC) 14.2.0
+      GNU Fortran (GCC) 14.2.0
+* macOS Ventura 13.3.1, R version 4.4.2 (2024-10-31), platform: aarch64-apple-darwin20
+  - R was compiled by
+      Apple clang version 14.0.0 (clang-1400.0.29.202)
+      GNU Fortran (GCC) 12.2.0
 
 ## Results
-
-0 errors ✓ | 0 warnings ✓ | 1 note x
-
-> checking CRAN incoming feasibility ... NOTE
-Found the following (possibly) invalid DOIs:
-    DOI: 10.18637/jss.v094.i06
-      From: DESCRIPTION
-            inst/CITATION
-      Status: Not Found
-      Message: 404
-
-The DOI in the CITATION is for a new JSS publication that will be registered after publication on CRAN
+Status: OK
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔

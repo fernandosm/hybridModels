@@ -1,3 +1,6 @@
+#' @keywords internal 
+"_PACKAGE"
+
 #' hybridModels: an R package for stochastic simulation of disease spreading in dynamic networks.
 #'
 #' The hybridModels package provides functions to simulate stochastic models
@@ -8,6 +11,5 @@
 #' @section Modeling transmission of diseases:
 #' 'Framework to run n simulations in dynamic network and plot results'
 #'
-#' @docType package
 #' @name hybridModels
 NULL
